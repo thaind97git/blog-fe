@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "_static/*": ["public/static/*"],
+      "@/*": ["src/*"]
+    }
+  },
+  "exclude": ["node_modules"]
+}

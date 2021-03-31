@@ -1,0 +1,276 @@
+// colors
+// 355070, 6d597a, b56576, e56b6f, eaac8b
+$text-colorBg: #2f363d;
+$dark: #c9d1d9;
+$darkBg: #0d1117;
+
+html {
+  font-size: 16px;
+}
+
+.login {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+  background-color: lighten($text-color, 15%);
+  background-image: url('/public/static/assest/svgs/bg.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &__challenge-title {
+    text-align: center;
+    padding: 0;
+    margin: 1rem 0 0.5rem;
+    color: $darkBg;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  &__challenge-subtitle {
+    text-align: center;
+    margin: 0;
+    font-size: 1.125rem;
+    color: darken($darkBg, 10%);
+    margin-bottom: 2rem;
+  }
+
+  &__challenge-part-of {
+    text-align: center;
+    margin: 1rem 0 0;
+    font-size: 0.875rem;
+    color: $darkBg;
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    background-color: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(5px);
+    border-radius: 0.5rem;
+    font-weight: bold;
+    padding: 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+      rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    a,
+    a:visited {
+      color: $darkBg;
+      text-decoration-style: wavy;
+      &:hover,
+      &:active {
+        color: lighten($darkBg, 10%);
+      }
+    }
+  }
+
+  &__card {
+    margin: auto;
+    width: 800px;
+    min-height: 400px;
+    display: flex;
+    align-items: stretch;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+      rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .login-glass {
+    flex: 0 0 40%;
+    background-color: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    svg {
+      width: 30%;
+      fill: $primary-color;
+    }
+  }
+
+  .login-form-container {
+    flex: 0 0 60%;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    background-color: white;
+    .login-title {
+      font-size: 1.25rem;
+      font-weight: bold;
+      text-align: center;
+      padding: 0 0 2rem;
+    }
+    .form-control {
+      display: flex;
+      align-items: center;
+      position: relative;
+      width: 100%;
+      &:not(:last-of-type) {
+        margin-bottom: 1.5rem;
+      }
+      > label {
+        position: absolute;
+        font-weight: bold;
+        color: darken($text-color, 50%);
+        font-size: 0.875rem;
+        top: 0;
+        left: 0.75rem;
+        transform: translateY(-50%);
+        background-color: white;
+        padding: 0 0.25rem;
+      }
+      > input {
+        flex: 1 0 auto;
+        padding: 0.875rem;
+        border-radius: 0.5rem;
+        border: 1px solid $text-color;
+        transition: border-color 0.2s ease;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+          rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+        &:hover {
+          border-color: $primary-color;
+        }
+        &:focus {
+          outline: 0;
+          border-color: $primary-color;
+        }
+      }
+      .form-remember,
+      .form-forgot {
+        flex: 1 0 50%;
+        display: flex;
+        align-items: center;
+      }
+      .form-remember {
+        label {
+          cursor: pointer;
+          color: darken($text-color, 30%);
+          transition: color 0.2s ease;
+          padding-left: 0.5rem;
+          position: relative;
+          &:hover {
+            color: $darkBg;
+          }
+          &::before {
+            content: '\f0c8';
+            position: absolute;
+            font-family: 'Font Awesome 5 Free';
+            top: 50%;
+            transform: translateY(-50%);
+            left: -0.875rem;
+            color: darken($text-color, 30%);
+          }
+        }
+        input:hover + label {
+          color: $darkBg;
+        }
+        input:checked + label::before {
+          content: '\f14a';
+        }
+        input {
+          cursor: pointer;
+          margin: 0;
+          opacity: 0;
+        }
+      }
+      .form-forgot {
+        justify-content: flex-end;
+        a,
+        a:focus {
+          color: $primary-color;
+          font-size: 0.875rem;
+          font-weight: bold;
+          text-decoration: none;
+          &:hover,
+          &:active {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+
+  .btn {
+    display: flex;
+    align-items: center;
+    background-color: $primary-color;
+    border: 0;
+    color: white;
+    padding: 0.875rem 1rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    border: 1px solid $primary-color;
+    transition: background-color 0.1s ease-in;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+      rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    &:hover {
+      background-color: lighten($primary-color, 5%);
+    }
+    &:active {
+      background-color: darken($primary-color, 5%);
+    }
+    &:focus {
+      outline: 1px dotted darken($primary-color, 20%);
+    }
+    &.btn-full {
+      flex: 1 0 auto;
+      font-weight: bold;
+      font-size: 0.875rem;
+      justify-content: center;
+    }
+    &.btn-default {
+      background-color: lighten($text-color, 40%);
+      color: darken($text-color, 20%);
+      border-color: $text-color;
+      &:hover {
+        background-color: darken(lighten($text-color, 40%), 5%);
+      }
+      &:active {
+        background-color: darken(lighten($text-color, 40%), 10%);
+      }
+    }
+  }
+
+  .divider {
+    padding: 2rem 1rem;
+    margin: 0 auto;
+    font-size: 0.875rem;
+    color: darken($text-color, 10%);
+    position: relative;
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 140px;
+      height: 1px;
+      background-color: $text-color;
+    }
+    &::before {
+      left: 0;
+      transform: translateX(-100%);
+    }
+    &::after {
+      right: 0;
+      transform: translateX(100%);
+    }
+  }
+
+  .social-list {
+    display: flex;
+    align-items: center;
+    margin: 0 -0.5rem;
+    li {
+      flex: 0 0 (100%/3);
+      padding: 0 0.5rem;
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  }
+}

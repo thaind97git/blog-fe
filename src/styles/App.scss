@@ -1,0 +1,32 @@
+@import './size';
+
+
+/*
+ * START CSS BOOTSTRAP
+*/
+// Generate breakpoints function
+@import './breakpoints';
+
+// Generate row and col (Depending into breakpoints.scss)
+@import './grid.scss';
+
+// Generate container (Depending into breakpoints.scss)
+@import './container';
+/*
+ * END CSS BOOTSTRAP
+*/
+
+// system color
+@import './color';
+
+// custom class
+@import './utils';
+
+// load all component style
+@import '../components/**/*.scss';
+
+// load all pages style
+@import '../pages/**/*.scss';
+
+// load all layouts style
+@import '../layouts/**/*.scss';
