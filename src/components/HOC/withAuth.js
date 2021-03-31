@@ -11,7 +11,7 @@ const withAuth = AuthComponent => {
     const currentUser = useSelector(getCurrentUser);
 
     useEffect(() => {
-      dispatch(verifyToken())       ;
+      dispatch(verifyToken());
     }, [dispatch]);
 
     return currentUser ? <AuthComponent /> : <Empty />;
