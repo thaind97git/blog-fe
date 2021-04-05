@@ -3,18 +3,19 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
-
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const paths = require('./config/paths');
 const getClientEnvironment = require('./config/env');
 const common = require('./config/common');
-const { appIndexJs, esLintFile, appHtml, appBuild, publicUrlOrPath } = paths;
+const { appIndexJs, esLintFile, appBuild, publicUrlOrPath } = paths;
 const { getStyleLoaders } = common;
 
 // We will provide `paths.publicUrlOrPath` to our app
 // as %PUBLIC_URL% in `index.html` and `process.env.PUBLIC_URL` in JavaScript.
 // Omit trailing slash as %PUBLIC_URL%/xyz looks better than %PUBLIC_URL%xyz.
 // Get environment variables to inject into our app.
-const env = getClientEnvironment(publicUrlOrPath.slice(0, -1));
+const env = getClientEnvironment(publicUrlOrPath);
 
 // style files regexes
 const cssRegex = /\.css$/;
@@ -41,7 +42,12 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: [/node_modules/],
-        use: ['babel-loader'],
+        use: {
+          loader: 'babel-loader',
+          options: {
+            plugins: ['lodash'],
+          },
+        },
       },
       {
         test: /\.(js|jsx)$/,
@@ -76,9 +82,6 @@ module.exports = {
     },
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: appHtml,
-    }),
     // Makes some environment variables available in index.html.
     // The public URL is available as %PUBLIC_URL% in index.html, e.g.:
     // <link rel="icon" href="%PUBLIC_URL%/favicon.ico">
@@ -92,7 +95,12 @@ module.exports = {
     // Otherwise React will be compiled in the very slow development mode.
     new webpack.DefinePlugin(env.stringified),
     new WebpackManifestPlugin(),
+    new LodashModuleReplacementPlugin(),
+    // new webpack.optimize.UglifyJsPlugin({}),
   ],
+  optimization: {
+    minimizer: [new UglifyJsPlugin()],
+  },
   output: {
     // The build folder.
     path: appBuild,

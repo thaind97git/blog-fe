@@ -1,11 +1,15 @@
 import { getCurrentUser } from '@/api/auth';
 import { setLoading } from './';
 import { history } from '@/store';
+import { getToken } from '@/helpers/local-storage';
 export const SET_AUTHENTICATED = 'SET_AUTHENTICATED';
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 
 export const verifyToken = () => async dispatch => {
   let response;
+  if (!getToken()) {
+    history.push('/login');
+  }
   try {
     dispatch(setCurrentUser(null));
     dispatch(setLoading(true));

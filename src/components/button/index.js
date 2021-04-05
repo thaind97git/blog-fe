@@ -13,9 +13,19 @@ const getBtnStringType = ({ primary, danger, warning }) => {
   }
 };
 
-const Button = ({ primary, danger, warning, children = 'Click here' }) => {
+const Button = ({
+  primary,
+  danger,
+  warning,
+  children = 'Click here',
+  ...others
+}) => {
   const btnClass = [getBtnStringType({ primary, danger, warning })].join(' ');
-  return <button className={`btn btn-${btnClass}`}>{children}</button>;
+  return (
+    <button className={`btn btn-${btnClass}`} {...others}>
+      {children}
+    </button>
+  );
 };
 
 export default Button;

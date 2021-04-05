@@ -3,15 +3,15 @@ process.env.NODE_ENV = 'development';
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
 const openBrowser = require('react-dev-utils/openBrowser');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
-//   .BundleAnalyzerPlugin
+//   .BundleAnalyzerPlugin;
 const paths = require('./config/paths');
 
-// TO DO: Find the way to load variables .env at here. Now, can not load from .env
 const REACT_APP_PORT = process.env.REACT_APP_PORT || 3000;
 const host = process.env.HOST || '0.0.0.0';
 
-const { appPublic } = paths;
+const { appPublic, appHtml } = paths;
 
 module.exports = merge(common, {
   mode: 'development',
@@ -21,8 +21,6 @@ module.exports = merge(common, {
     host,
     hot: true,
     port: REACT_APP_PORT,
-    // Without page refresh as a fallback in case of build failures.
-    hotOnly: true,
     historyApiFallback: true,
     stats: {
       colors: true,
@@ -43,6 +41,10 @@ module.exports = merge(common, {
     },
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: appHtml,
+    }),
     // new BundleAnalyzerPlugin({ analyzerPort: REACT_APP_PORT })
   ],
   output: {

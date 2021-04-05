@@ -1,12 +1,16 @@
-import { getIsAuthenticated } from '@/store/selectors/auth';
+// import { getIsAuthenticated } from '@/store/selectors/auth';
 import { getDisplayLayout } from '@/store/selectors/layout';
 import React from 'react';
 import { useSelector } from 'react-redux';
 
 const Header = () => {
   const { header } = useSelector(getDisplayLayout);
-  const isAuthenticated = useSelector(getIsAuthenticated);
-  if (!isAuthenticated || !header) {
+  // const isAuthenticated = useSelector(getIsAuthenticated);
+  // if (!isAuthenticated || !header) {
+  //   return null;
+  // }
+
+  if (!header) {
     return null;
   }
   return (

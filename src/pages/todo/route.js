@@ -1,16 +1,16 @@
 import { lazy } from 'react';
 
-const Home = lazy(() => import('./index'));
+const TodoList = lazy(() => import('./index'));
 
 export default [
   {
-    name: 'home',
-    path: '/',
+    name: 'todo-list',
+    path: '/todo-list',
     exact: true,
     layout: {
       header: true,
       footer: true,
     },
-    component: Home,
+    component: TodoList,
   },
 ];
