@@ -9,7 +9,7 @@ import App from './App';
 import store, { history } from '@/store';
 
 // multi language
-// import '@/i18n'
+// import '@/locales'
 
 // load app SCSS styles
 import '@/styles/App.scss';

@@ -1,1 +1,1 @@
-# Readme Starter
+# The React Boilerplate with Webpack config manual"

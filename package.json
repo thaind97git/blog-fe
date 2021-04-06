@@ -1,7 +1,7 @@
 {
   "name": "react-starter",
   "version": "1.0.0",
-  "description": "",
+  "description": "The React Boilerplate with Webpack config manual",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
