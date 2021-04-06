@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { getDisplayLayout } from '@/store/selectors/layout';
 import { compareTwoObject } from '@/utils';
 import { setDisplayLayout } from '@/store/actions/layout';
-import { useShallowEqualSelector } from '@/hooks/useShallowEqualSelector';
+import { useShallowEqualSelector } from '@/app/hooks/useShallowEqualSelector';
 
 const Main = () => {
   const layout = useShallowEqualSelector(getDisplayLayout);

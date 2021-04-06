@@ -11,7 +11,7 @@
     "format": "prettier --write \"**/*.+(js|jsx|ts|json|css|md)\""
   },
   "lint-staged": {
-    "*.+(js|jsx|ts)": "eslint --fix",
+    "*.+(js|jsx|ts)": "eslint --max-warnings 0 --fix",
     "*.+(js|jsx|ts|json|css|md)": "prettier --write"
   },
   "husky": {

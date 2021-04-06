@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 
-import Layout from '@/layouts';
-import PageLoading from '@/components/page-loading';
+import Layout from '@/app/layouts';
+import PageLoading from '@/app/components/Page-Loading';
 
 const ReactApp = () => {
   return (

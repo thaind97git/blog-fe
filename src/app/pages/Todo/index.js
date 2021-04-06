@@ -1,5 +1,5 @@
 import { getTodoList } from '@/api/todo';
-import Button from '@/components/button';
+import Button from '@/app/components/Button';
 import { setLoading } from '@/store/actions';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';

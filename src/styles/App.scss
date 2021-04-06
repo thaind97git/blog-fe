@@ -1,6 +1,5 @@
 @import './size';
 
-
 /*
  * START CSS BOOTSTRAP
 */
@@ -23,10 +22,10 @@
 @import './utils';
 
 // load all component style
-@import '../components/**/*.scss';
+@import '../app/components/**/*.scss';
 
 // load all pages style
-@import '../pages/**/*.scss';
+@import '../app/pages/**/*.scss';
 
 // load all layouts style
-@import '../layouts/**/*.scss';
+@import '../app/layouts/**/*.scss';
