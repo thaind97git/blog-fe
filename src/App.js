@@ -1,9 +1,9 @@
 import React, { Suspense } from 'react';
-import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
-import store, { history } from '@/store';
+import { history } from '@/store';
 import { ConnectedRouter } from 'connected-react-router';
 import { ToastContainer } from 'react-toastify';
+import { Helmet } from 'react-helmet-async';
 
 import Layout from '@/app/layouts';
 import PageLoading from '@/app/components/Page-Loading';
@@ -23,15 +23,18 @@ import 'react-toastify/dist/ReactToastify.css';
 const ReactApp = () => {
   return (
     <Router>
-      <Provider store={store}>
-        <ConnectedRouter history={history}>
-          <Suspense fallback={<PageLoading show />}>
-            <Layout />
-            <PageLoading />
-          </Suspense>
-          <ToastContainer />
-        </ConnectedRouter>
-      </Provider>
+      <Helmet titleTemplate="%s - React Starter" defaultTitle="React Starter">
+        <meta name="description" content="A React Starter application" />
+      </Helmet>
+
+      <ConnectedRouter history={history}>
+        <Suspense fallback={<PageLoading show />}>
+          <Layout />
+          <PageLoading />
+        </Suspense>
+      </ConnectedRouter>
+
+      <ToastContainer />
     </Router>
   );
 };

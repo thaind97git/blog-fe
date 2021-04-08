@@ -1,9 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import ReactApp from './App';
+import { createRenderer } from 'react-test-renderer/shallow';
+import App from './App';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<ReactApp />, div);
-  ReactDOM.unmountComponentAtNode(div);
+const renderer = createRenderer();
+
+it('renders <App/> without crashing', () => {
+  renderer.render(<App />);
+  const renderedOutput = renderer.getRenderOutput();
+  expect(renderedOutput).toMatchSnapshot();
 });
