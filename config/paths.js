@@ -33,4 +33,5 @@ module.exports = {
   proxySetup: resolveApp('src/setupProxy.js'),
   appNodeModules: resolveApp('node_modules'),
   publicUrlOrPath,
+  testsSetup: resolveApp('src/setupTest.js'),
 };

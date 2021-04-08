@@ -1,1 +1,1 @@
-# The React Boilerplate with Webpack config manual"
+# The React Starter with Webpack config manual

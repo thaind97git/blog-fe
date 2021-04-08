@@ -5,9 +5,9 @@ const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const paths = require('./config/paths');
-const getClientEnvironment = require('./config/env');
-const common = require('./config/common');
+const paths = require('../config/paths');
+const getClientEnvironment = require('../config/env');
+const common = require('../config/common');
 const { appIndexJs, esLintFile, appBuild, publicUrlOrPath } = paths;
 const { getStyleLoaders } = common;
 

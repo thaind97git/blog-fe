@@ -1,4 +1,4 @@
-export const parseBoolean = val =>
+const parseBoolean = val =>
   !val ||
   val === 'false' ||
   val === 'null' ||

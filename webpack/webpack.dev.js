@@ -6,7 +6,7 @@ const openBrowser = require('react-dev-utils/openBrowser');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
 //   .BundleAnalyzerPlugin;
-const paths = require('./config/paths');
+const paths = require('../config/paths');
 
 const REACT_APP_PORT = process.env.REACT_APP_PORT || 3000;
 const host = process.env.HOST || '0.0.0.0';

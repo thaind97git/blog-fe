@@ -9,7 +9,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const safePostCssParser = require('postcss-safe-parser');
-const paths = require('./config/paths');
+const paths = require('../config/paths');
 const { appBuild, appPublic, appHtml } = paths;
 
 // Source maps are resource heavy and can cause out of memory issue for large source files.
