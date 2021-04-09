@@ -22,10 +22,10 @@
 @import './utils';
 
 // load all component style
-@import '../app/components/**/*.scss';
+@import '../components/**/*.scss';
 
 // load all pages style
-@import '../app/pages/**/*.scss';
+@import '../pages/**/*.scss';
 
 // load all layouts style
-@import '../app/layouts/**/*.scss';
+@import '../layouts/**/*.scss';

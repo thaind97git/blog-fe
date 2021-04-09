@@ -1,4 +1,4 @@
-import { getCurrentUser } from '@/api/auth';
+import { getCurrentUser } from '@/apis/auth';
 import { setLoading } from './';
 import { history } from '@/store';
 import { getToken } from '@/helpers/local-storage';

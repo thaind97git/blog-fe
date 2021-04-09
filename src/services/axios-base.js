@@ -1,4 +1,4 @@
-import { getHeaders } from '@/helpers';
+import { getHeaders } from '@/utils';
 
 import axios from 'axios';
 // Make an 'instance' of axios

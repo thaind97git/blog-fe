@@ -1,4 +1,4 @@
-import { getHeaders } from '.';
+import { getHeaders } from '@/utils';
 
 export const objectToQuery = (object = {}) => {
   return Object.keys(object)
