@@ -22,7 +22,7 @@ const Main = () => {
   };
 
   return (
-    <div id="main" className="container">
+    <div id="main">
       <Switch>
         {routes.map(
           ({ component: Component, path, layout: currentLayout, ...rest }) => {

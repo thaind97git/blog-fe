@@ -3,22 +3,22 @@
 #footer {
   height: 100px;
   width: 100%;
-  background: #171717;
+  background: red;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-}
-h1 {
-  color: white;
-  font-weight: 500;
-  font-size: 2rem;
-  margin-bottom: 0rem;
-  letter-spacing: 1px;
-  word-spacing: 2px;
-  margin-bottom: 0.7rem;
-}
-p {
-  font-size: 0.9rem;
-  color: #d8d8d8;
+  h1 {
+    color: $primary-color;
+    font-weight: 500;
+    font-size: 2rem;
+    margin-bottom: 0rem;
+    letter-spacing: 1px;
+    word-spacing: 2px;
+    margin-bottom: 0.7rem;
+  }
+  p {
+    font-size: 0.9rem;
+    color: #d8d8d8;
+  }
 }

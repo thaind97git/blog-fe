@@ -1,17 +1,16 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
-import Header from './Header';
-
-import Footer from './Footer';
 import Main from './Main';
+import Sidebar from './Sidebar';
 
 const Layout = () => {
   return (
-    <Fragment>
-      <Header />
-      <Main />
-      <Footer />
-    </Fragment>
+    <div className="layout">
+      <Sidebar />
+      <div className="layout--content">
+        <Main />
+      </div>
+    </div>
   );
 };
 

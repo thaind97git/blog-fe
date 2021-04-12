@@ -13,8 +13,11 @@ const getHeaders = (options = {}) =>
     },
     options,
   );
+
+const isBrowser = typeof window !== 'undefined';
 export default {
   sleep,
   getResetter,
   getHeaders,
+  isBrowser,
 };
