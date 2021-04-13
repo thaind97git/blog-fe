@@ -53,6 +53,10 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: [/node_modules/],
       },
+      // {
+      //   test: /\.html$/i,
+      //   loader: 'html-loader',
+      // },
       {
         test: cssRegex,
         use: getStyleLoaders(),

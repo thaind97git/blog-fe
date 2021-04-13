@@ -1,0 +1,387 @@
+<hr />
+<p>
+  title: &gt;- [ Chuyện của DEV - Phần 2 ] Control một Pull Request Trong Mô
+  Hình Scrum với Github date: &#39;2020-02-26 17:30&#39; tags:
+</p>
+<ul>
+  <li>JavaScript</li>
+  <li>Scrum</li>
+  <li>GitHub</li>
+</ul>
+<hr />
+<p>
+  Xin chào các bạn, ở
+  <a
+    href="https://dev-blogs.netlify.com/2019-12-31-chuy%E1%BB%87n-c%E1%BB%A7a-dev-ph%E1%BA%A7n-1-t%E1%BB%91i-%C6%B0u-h%C3%B3a-source-code-v%E1%BB%9Bi-coding-convention/"
+    >bài viết trước</a
+  >
+  mình đã chia sẻ một vài mẹo nhỏ để <code>source code</code> của bạn trở nên dễ
+  đọc và tối ưu hơn. Ở lần này mình sẽ giúp các bạn hiểu rõ hơn về một quy trình
+  làm việc rất quan trọng cho những môi trường <code>start-up</code> hay những
+  team nhỏ, nó cũng là một văn hóa làm việc giúp bạn trở nên chuyên nghiệp hơn
+  trong quá trình phát triển bản thân. Đó chính là quy trình
+  <code>nhận và hoàn thành tasks</code> với mô hình
+  <a href="https://www.scrum.org/">Scrum </a>thông qua <code>GitHub</code>.
+</p>
+<p>
+  <em
+    >Những thứ mình chia sẻ sau đây chỉ là những gì mình đã làm và đúc kết kinh
+    nghiệm từ nó. Mọi thứ vẫn rất hạn chế, vậy nên nếu có gì sai sót mong các
+    bạn, anh chị đi trước có thể bỏ qua hoặc đóng góp thêm để cho bài viết được
+    hoàn hảo hơn!</em
+  >
+</p>
+<p>
+  [ Control một Pull Request Trong Mô Hình Scrum với GitHub ] - Như tiêu đề đã
+  nói, mình sẽ mô phỏng lại quá trình để hoàn thành một <code>Task</code> trong
+  quá trình phát triển <code>Project</code> sử dụng mô hình
+  <a href="https://www.scrum.org/">Scrum</a> mà mình (Developer) nói chung và
+  team members nói riêng đã và đang làm.
+</p>
+<p>
+  Trước hết hãy sơ lược qua <a href="https://www.scrum.org/">Scrum</a> là gì
+  (theo <a href="https://www.scrum.org/resources/what-is-scrum">scrum.org</a>):
+</p>
+<p><img src="/img/ScrumFramework.png" alt="" /></p>
+<blockquote>
+  <p>
+    Scrum is a framework within which people can address complex adaptive
+    problems, while productively and creatively delivering products of the
+    highest possible value.
+  </p>
+</blockquote>
+<p>Tạm dịch ra tiếng việt là:</p>
+<blockquote>
+  <p>
+    Scrum là một khuôn khổ trong đó mọi người có thể giải quyết các vấn đề thích
+    ứng phức tạp, trong khi cung cấp sản phẩm một cách hiệu quả và sáng tạo với
+    giá trị cao nhất có thể
+  </p>
+</blockquote>
+<p>Những đặc tả về <a href="https://www.scrum.org/">Scrum</a>:</p>
+<ul>
+  <li>Lightweight (Nhẹ nhàng)</li>
+  <li>Simple to understand (Dễ dàng để hiểu)</li>
+  <li>Difficult to master (Khó để thành thạo về nó)</li>
+</ul>
+<p>Roles trong <a href="https://www.scrum.org/">Scrum</a>:</p>
+<ul>
+  <li>Product Owner</li>
+  <li>Scrum Master</li>
+  <li>Development Team</li>
+</ul>
+<blockquote>
+  <p>
+    Bởi vì nhóm phát triển theo Scrum là đa chức năng nên Development Team sẽ
+    đảm nhận luôn các vị trí Tester, Designer, Coder.
+  </p>
+</blockquote>
+<p>
+  Với mô hình <a href="https://www.scrum.org/">Scrum</a>, quá trình làm việc sẽ
+  được tách ra thành những giai đoạn nhỏ (Sprint) có thời gian từ 2 tuần -&gt; 2
+  tháng tùy vào mỗi team quy định. Và với mỗi <code>Sprint</code> chúng ta sẽ có
+  những <code>plan</code> cụ thể thông qua các công việc sau đây:
+</p>
+<ol>
+  <li>
+    <p>Sprint planning:</p>
+    <ul>
+      <li>
+        Đây là lúc bắt đầu một <code>Sprint</code> mới,
+        <code>Development Team</code>, <code>Scrum Master</code> và
+        <code>Product Owner</code> sẽ quyết định xem những công việc nào cần
+        được thực hiện trong <code>Sprint</code> tới
+      </li>
+      <li>
+        <p>
+          Sau khi tạo <code>Issue (tạo task)</code>, mọi người sẽ đánh giá độ
+          phức tạp của <code>Issue</code> và tiến hành
+          <code>pick task</code> dựa trên <code>time commitment</code> mà mọi
+          người đã xác định.
+          <a href="https://www.scrum.org/resources/commitment-vs-forecast"
+            >What is commitment scrum?</a
+          >
+        </p>
+        <p>
+          <em
+            >Lưu ý: đánh giá độ phức tạp của task là tùy theo cảm nhận của từng
+            member, bạn có thể đánh giá task có độ phức tạp cao nếu bạn cảm thấy
+            nó vượt sức với mình và ngược lại. Tất nhiên nếu bạn đánh giá task
+            quá phức tạp thì bạn nên cho mọi người biết vì sao.</em
+          >
+        </p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    Daily stand-up (Daily Scrum): Vào mỗi ngày trong suốt <code>Sprint</code>,
+    sẽ có một cuộc họp nhỏ vào buổi sáng khoảng 15 phút để mọi người có thể trao
+    đổi những khó khăn hoặc báo cáo tình hình làm việc trong ngày.
+  </li>
+  <li>
+    Sprint Review: Đây là một cuộc họp nhỏ trong team ở gần cuối
+    <code>Sprint</code> để báo cáo xem <code>members</code> đã làm được gì. Dựa
+    vào đó để có thể điều chỉnh <code>Product Backlog</code> nếu cần.
+  </li>
+  <li>
+    <p>
+      Sprint Retrospective: Với giai đoạn này, mỗi thành viên sẽ tự đánh giá và
+      báo cáo với team xem những gì mình đã làm được và chưa làm được ở
+      <code>Sprint</code> này. Dựa vào đó điều chỉnh và đưa ra giải pháp để
+      <code>Sprint kế tiếp</code> được tốt và hoàn chỉnh hơn.
+    </p>
+    <blockquote>
+      <p>
+        <em
+          >Ở plan này, các bạn chỉ cần trả lời được hai câu hỏi: What is goods
+          for yourself? and What need to improve in the next Sprint?</em
+        >
+      </p>
+    </blockquote>
+  </li>
+</ol>
+<p>
+  OK, Đã xong lý thuyết :D. Bây giờ mình sẽ demo cho các bạn cách mà mình cùng
+  <code>Development Team</code> tạo <code>Issue</code> và
+  <code>Pull Request</code> với <code>GitHub</code>.
+</p>
+<p><strong>I. Tạo Issue</strong></p>
+<p><img src="/img/issue_1.png" alt="" /></p>
+<p>
+  Để tạo một issue cho project, bạn có thể chọn <code>Issues Tab</code> và bấm
+  <code>New issue</code>, môt giao diện sẽ hiện ra như hình trên. Trong mục này,
+  một số mục bạn cần làm đó là thêm <code>Issue&#39;s title</code> (<code
+    >Description</code
+  >
+  là để mô tả rõ hơn về issue, có thể có hoặc không) và một số mục phía bên
+  phải.
+</p>
+<ol>
+  <li>
+    Assignees: Mục này bạn sẽ <code>assign</code> cho chính bạn (người tạo ra
+    issue)
+  </li>
+  <li>
+    Labels: Ở mục này các bạn có thể <code>add labels</code> để mô tả rõ hơn về
+    <code>Issue&#39;s type</code>
+    <a
+      href="https://docs.readthedocs.io/en/stable/development/issue-labels.html"
+      >What is label issue ?</a
+    >
+  </li>
+  <li>
+    <p>
+      Projects: Các bạn lưu ý ở mục này, bạn cần chọn <code>Project</code> tương
+      ứng đã được tạo trong <code>Projects Tab</code> để issue có thể add vào
+      mục quản lý task giống như <a href="https://trello.com/">Trello</a>
+    </p>
+    <p>
+      <em
+        >Lưu ý: Bạn cần <code>add new</code> một Project tại
+        <code>Projects Tab</code> để có thể quản lý task như Trello</em
+      >
+    </p>
+  </li>
+  <li>
+    Milestone: Chọn <code>Project&#39;s Version</code> tương ứng với issue
+  </li>
+  <li>
+    Linked Pull Request: Đây sẽ là nơi bạn gán
+    <code>Pull Request Link</code> tương ứng với issue
+  </li>
+</ol>
+<p>
+  Hình ảnh về một <code>Projects Task</code> giống
+  <a href="https://trello.com/">Trello</a>
+</p>
+<p><img src="/img/project_1.png" alt="" /></p>
+<blockquote>
+  <p>
+    Với <code>Project&#39;s Issue</code>, mọi người trong team hay ngoài team
+    đều có thể <code>add new issue</code>, miễn là đừng spam (Cái này thuộc phạm
+    trù vi phạm luật giang hồ về đạo đức nhé :))))
+  </p>
+</blockquote>
+<p><strong>II. Tạo Pull Request</strong></p>
+<p>
+  Sau khi đã có issue, bây giờ bạn có thể tạo một <code>GitHub Branch</code> từ
+  issue đó với một <code>branch name rule</code> được định nghĩa sẵn của mỗi
+  team.
+</p>
+<p>
+  Trong trường hợp này mình sẽ tạo một <code>GitHub Branch</code> theo rule mình
+  định nghĩa: <code>imp_nameProject-issueNumber (imp_scrum-1)</code>, trong đó
+  <code>imp</code> có nghĩa là <code>implement new somethings</code>,
+  <code>issueNumber</code> tương đương với số thứ tự của issue. Branch này có
+  nhiệm vụ <code>config redux</code> vào project.
+</p>
+<p>
+  <em
+    >Nên nhớ, với mỗi issue, bạn sẽ tạo ra một branch tương ứng với issue
+    đó.</em
+  >
+</p>
+<p>
+  Tại <code>Pull Request Tab</code>, nhấn vào <code>New pull request</code> sau
+  đó bạn sẽ thấy giao diện như sau:
+</p>
+<p><img src="/img/PR_1.png" alt="" /></p>
+<ul>
+  <li>
+    base combobox: các bạn sẽ chọn nhánh develop, trong trường hợp này mình
+    không quản lý với <code>develop branch</code> nên mình tạo PR thẳng cho
+    <code>master</code> luôn.
+  </li>
+  <li>compare combobox: các bạn sẽ chọn nhánh mà bạn muốn tạo PR</li>
+</ul>
+<p>Các bạn nhấn Create pull request và sẽ thấy hình sau:</p>
+<p><img src="/img/PRR_1.png" alt="" /></p>
+<p>
+  Tại đây chúng ta cũng có một số mục giống các bước tạo issue như
+  <code>title</code>, <code>assignees</code>, <code>labels</code>,
+  <code>projects</code>, <code>milestone</code>. Và các bước này bạn cũng sẽ làm
+  giống như tạo issue.
+</p>
+<p>
+  Với mục <code>Linked issues</code>, đây sẽ là nơi bạn
+  <code>add issues</code> tương ứng mà bạn hoặc người khác đã tạo trước đó. Ở
+  đây bạn không add trực tiếp được khi tạo PR, mà các bạn phải
+  <code>tạo PR thành công</code> rồi mới quay lại
+  <code>Linked issues</code> được.
+</p>
+<blockquote>
+  <p>
+    Bạn cũng có thể <code>link issue</code> bằng việc viết trong
+    <code>description</code> với cú pháp <code>#issueNumber</code> (Ví dụ: #1,
+    #2, ...)
+  </p>
+</blockquote>
+<p>
+  Với mục <code>Reviewers</code>, đây sẽ là nơi bạn add những thành viên khác
+  vào để họ có thể <code>review code</code> giúp bạn. Mục đích của việc tạo PR
+  là để các thành viên khác trong team biết được <code>bạn đang làm gì</code>,
+  <code>bạn làm cái gì</code>, <code>bạn làm như thế nào</code>, vì vậy đây là
+  phần quan trọng nhất cho một PR.
+</p>
+<p><strong>III. Công việc review code của development team</strong></p>
+<p>
+  Sau khi đã tạo PR thành công, <code>development team</code> có nhiệm vụ đi
+  <code>review code</code> của PR.
+</p>
+<p><img src="/img/review_change.png" alt="" /></p>
+<p>Một PR sẽ có 4 tabs chính.</p>
+<ol>
+  <li>
+    Conversation: Nơi hiển thị các hoạt động của PR, bao gồm việc hiển thị
+    <code>các hành động</code> của bạn với PR đó,
+    <code>hiển thị comments</code>, hiển thì <code>danh sách commits</code> của
+    bạn...
+  </li>
+  <li>Commits: Đây là danh sách các <code>commits</code> của bạn đối với PR</li>
+  <li>
+    Checks: Đây là nơi hiển thị <code>Build</code>, <code>Test</code> và
+    <code>Deploy</code> với <code>word-class CI/CD</code> của Project team bạn
+  </li>
+  <li>
+    <p>
+      Files changed: Đây là nơi các bạn sẽ <code>review code</code>. Nó hiển thị
+      tất cả những gì mà PR này <code>đang change so với base branch</code> mà
+      mình đã chọn (master)
+    </p>
+    <p>
+      <em
+        >Để xem được chế độ view code split, bên trái sẽ là base branch code,
+        bên phải sẽ là changed branch code, các bạn cần vào Setting Icon -&gt;
+        chọn chế độ Split -&gt; Apply and reload</em
+      >
+    </p>
+  </li>
+</ol>
+<p>
+  Tại mục <code>Review change</code> sẽ có 3 options chính sau khi bạn đã review
+  xong:
+</p>
+<ul>
+  <li>
+    Comment: Chọn nó khi bạn có thắc mắc gì về <code>code changed</code> và muốn
+    <code>comment</code> để hỏi hoặc <code>confirm</code>
+  </li>
+  <li>
+    Approve: <code>Approve</code> sẽ cho mọi người biết rằng bạn đã
+    <code>review xong</code> và mọi thứ đã ổn so với bạn
+  </li>
+  <li>
+    Request changes: Khi review xong, bạn để lại một vài comments muốn
+    <code>PR owner</code> thay đổi theo ý kiến của bạn thì hãy chọn nó.
+  </li>
+</ul>
+<p>Một ví dụ về comment:</p>
+<p><img src="/img/comment_1.png" alt="" /></p>
+<p>
+  Trong trường hợp này, mình muốn <code>PR owner</code> thay đổi một vài thứ. Cụ
+  thể là mình muốn <code>PR owner</code> tách
+  <code>connect react-redux HOC</code> ra khỏi <code>export default</code> bằng
+  việc tạo một <code>enhance</code> để dễ dàng cho việc <code>maintain</code> và
+  làm ví dụ cho các người code sau, vậy nên mình đã để lại
+  <code>comment</code> bằng một ví dụ cụ thể.
+</p>
+<p>
+  Các bạn nên nhớ, công việc <code>Review code</code> là một công việc rất quan
+  trọng trong quy trình này, vậy nên các bạn hãy review có tâm nhất nếu có thể.
+</p>
+<blockquote>
+  <p>
+    <em
+      >Mình thường review code bằng 2 việc. Đầu tiên là mình sẽ checkout branch
+      về để chạy thử feature, nếu ổn thì mình sẽ vào GitHub đọc xem PR owner đã
+      làm nó như thế nào, logic có tốt không hay có đúng naming convention
+      không.</em
+    >
+  </p>
+</blockquote>
+<p>
+  Những lợi ích khi bạn <code>Review code</code> và
+  <code>PR được Review</code> tốt:
+</p>
+<ul>
+  <li>
+    Bản thân bạn sẽ học được rất nhiều kiến thức nếu chăm chỉ
+    <code>đọc code</code>, <code>đọc logic</code> của các thành viên khác trong
+    team. Vì một đoạn code có thể có rất nhiều cách viết hay, vậy nên biết đâu
+    đấy bạn sẽ học được điều hay đó từ <code>team members</code>. Tất nhiên đó
+    phải là code từ người có kinh nghiệm. Còn nếu code lởm, các bạn cứ thẳng tay
+    comment :)))
+  </li>
+  <li>
+    Code tại môi trường <code>develop</code> của team sẽ
+    <code>hạn chế lỗi</code> rất nhiều nếu bạn bắt chặt chẽ trong khi
+    <code>Review code</code>
+  </li>
+  <li>
+    Nếu bạn bắt chặt chẽ về mặt <code>naming convention</code>,
+    <code>logic code</code> thì luồng project của bạn trở về sau sẽ rất đồng
+    nhất và <code>clear</code>. Điều này sẽ rất có lợi cho việc
+    <code>Maintain Project.</code>
+  </li>
+</ul>
+<p>
+  <em
+    >Mẹo nhỏ trong khi Review code: Với trường hợp PR có quá nhiều
+    <code>file changed</code>, ở bên phải trên cùng của mỗi file sẽ có
+    <code>viewed checkbox</code>, nhấn vào đó để file được
+    <code>toggle hidden</code></em
+  >
+</p>
+<p>
+  Sau khi mọi thành viên đã <code>Approve PR</code>,
+  <code>Scrum master</code> sẽ có nhiệm vụ <code>merge</code> nó vào
+  <code>develop/master</code>, và <code>close issue</code> kèm theo. Như vậy là
+  đã xong một quá trình xử lý và hoàn thành task.
+</p>
+<p>
+  Hy vọng những chia sẻ nhỏ của mình sẽ giúp nhiều bạn cải thiện được kiến thức
+  và tác phong làm việc được hiệu quả hơn.
+</p>
+<blockquote>
+  <p><code>Code for fun and Code for food</code></p>
+</blockquote>

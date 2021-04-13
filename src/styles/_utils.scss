@@ -15,7 +15,10 @@ a {
 
 hr {
   margin-bottom: calc(1.5rem - 1px);
-  background: hsla(0, 0%, 0%, 0.2);
+  @include themify($themes) {
+    background: themed('textColor');
+  }
+  opacity: 0.4;
   border: none;
   height: 1px;
 }

@@ -9,8 +9,17 @@ const BLOGS = [
     id: '1',
     date: '26 February, 2020',
     tags: ['Javascript', 'Scrum', 'Github'],
-    slug:
-      '/2020-02-23-chuy%E1%BB%87n-c%E1%BB%A7a-dev-ph%E1%BA%A7n-2-control-m%E1%BB%99t-pull-request-trong-m%C3%B4-h%C3%ACnh-scrum-v%E1%BB%9Bi-github/',
+    slug: '/blogs/1',
+    title:
+      '[ Chuyện của DEV - Phần 2 ] Control một Pull Request Trong Mô Hình Scrum với Github',
+    excerpt:
+      'Xin chào các bạn, ở bài viết trước mình đã chia sẻ một vài mẹo nhỏ để của bạn trở nên dễ đọc và tối ưu hơn. Ở lần này mình sẽ giúp các bạn…',
+  },
+  {
+    id: '2',
+    date: '06 February, 2020',
+    tags: ['Javascript'],
+    slug: '/blogs/2',
     title:
       '[ Chuyện của DEV - Phần 1 ] Tối Ưu Hóa Source Code Với Coding Convention',
     excerpt:

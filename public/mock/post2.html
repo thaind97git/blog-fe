@@ -1,0 +1,301 @@
+<hr />
+<p>
+  title: &#39;[ Chuyện của DEV - Phần 1 ] Tối Ưu Hóa Source Code Với Coding
+  Convention&#39; date: &#39;2020-01-06 11:01&#39; tags:
+</p>
+<h2 id="-javascript">- JavaScript</h2>
+<p>
+  Xin chào mọi người ! Mình là Thái, hiện tại mình đang làm vị trí
+  <code>Front-End Developer</code>. Mình viết ra Series
+  <code>Chuyện của DEV</code> này mong muốn chia sẻ những kinh nghiệm ít ỏi của
+  mình, giúp những bạn <code>DEV</code> mới vào nghề có cái nhìn sâu hơn về
+  những thứ mà các bạn sẽ phải trải qua trong qúa trình đi làm. Giúp các bạn có
+  thể cải thiện hơn về <code>performance</code> trong qúa trình làm việc.
+</p>
+<p>
+  <em
+    >Do main technical của mình là JavaScript nên Series này mình sẽ chỉ nói về
+    <code>functional programming</code></em
+  >
+</p>
+<!-- <p><img src="/img/code-main.jpg" alt="" /></p> -->
+<p>
+  <strong
+    >Câu chuyện thứ nhất mà mình muốn chia sẻ cho các bạn theo góc nhìn của mình
+    đó là Coding Convention trong qúa trình phát triển source code.</strong
+  >
+</p>
+<p>
+  Đầu tiên, mình sẽ show với các bạn một đoạn <code>code</code> mình từng viết
+  bằng <code>Jquery</code> ( đây là một function <code>handle success</code> khi
+  call <code>ajax</code> ):
+</p>
+<pre><code class="lang-javascript">success: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">result</span>) </span>{
+  <span class="hljs-keyword">if</span> (result.success == <span class="hljs-literal">true</span>) {
+    <span class="hljs-keyword">var</span> priceCOD = result.rs.reduce(<span class="hljs-function">(<span class="hljs-params">currentprice, item</span>) =&gt;</span> {
+      <span class="hljs-keyword">return</span> currentprice + item[<span class="hljs-number">4</span>];
+    }, <span class="hljs-number">0</span>);
+    <span class="hljs-keyword">var</span> priceServiceCharge = result.rs.reduce(<span class="hljs-function">(<span class="hljs-params">currentprice, item</span>) =&gt;</span> {
+      <span class="hljs-keyword">return</span> currentprice + item[<span class="hljs-number">5</span>];
+    }, <span class="hljs-number">0</span>);
+    <span class="hljs-keyword">if</span> (result.rs != <span class="hljs-literal">null</span>) {
+      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> j = <span class="hljs-number">0</span>; j &lt;= result.rs.length - <span class="hljs-number">1</span>; j++) {
+        <span class="hljs-keyword">if</span> (result.rs[j] == <span class="hljs-literal">false</span>) {
+          checkGlobal = <span class="hljs-literal">false</span>;
+        } <span class="hljs-comment">// if have isCorrect == false =&gt; have error</span>
+      }
+    } <span class="hljs-keyword">else</span> {
+      checkGlobal = <span class="hljs-literal">false</span>; <span class="hljs-comment">// List result.rs == null =&gt; have error</span>
+    }
+    <span class="hljs-comment">// Còn nữa nhưng nhiều quá :3</span>
+  } <span class="hljs-keyword">else</span> {
+    ShowAlert(result.message, <span class="hljs-number">1</span>);
+  }
+};
+</code></pre>
+<p>
+  Khoan hãy nói đến chức năng của <code>function</code> này ( mà nếu có nói đến
+  chắc mình cũng không thể giải thích được chức năng của nó mặc dù mình là người
+  <code>implement</code> :3 ). Có lẽ bạn cũng sẽ thấy, có quá nhiều vấn đề đối
+  với đoạn <code>code</code> trên. Vd đặt <code>tên biến</code> không có nghĩa,
+  <code>comment</code> vô nghĩa và quan trọng nhất là <code>code</code> rất dễ
+  có <code>bug</code>.
+</p>
+<p>
+  Tiếp theo, các bạn <code>follow</code> đoạn code dưới đây (đoạn code đã được
+  cải thiện rất nhiều về <code>convention</code> sau một quá trình uốn nén của
+  anh Leader mình :D ):
+</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> { toast } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-toastify'</span>;
+<span class="hljs-keyword">import</span> {
+  TOAST_SUCCESS, TOAST_ERROR, TOAST_WARN,
+  TOAST_INFO, TOAST_DEFAULT
+} <span class="hljs-keyword">from</span> <span class="hljs-string">'../utils/actions'</span>;
+<span class="hljs-keyword">const</span> TOAST_DEFAULT_OPTIONS = {
+  <span class="hljs-attr">autoClose</span>: <span class="hljs-number">5000</span>,
+  ...
+  };
+
+<span class="hljs-keyword">const</span> getToastFunctionByType = <span class="hljs-function"><span class="hljs-params">type</span> =&gt;</span> {
+  <span class="hljs-keyword">switch</span> (type) {
+    <span class="hljs-keyword">case</span> TOAST_SUCCESS: <span class="hljs-keyword">return</span> toast.success;
+    <span class="hljs-keyword">case</span> TOAST_ERROR: <span class="hljs-keyword">return</span> toast.error;
+    <span class="hljs-keyword">case</span> TOAST_WARN: <span class="hljs-keyword">return</span> toast.warn;
+    <span class="hljs-keyword">case</span> TOAST_INFO: <span class="hljs-keyword">return</span> toast.info;
+    <span class="hljs-keyword">case</span> TOAST_DEFAULT: <span class="hljs-keyword">return</span> toast;
+    <span class="hljs-keyword">default</span>: <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+  }
+};
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+  displayNotify(state = {}, { type, payload = {} }) {
+    <span class="hljs-keyword">const</span> { message, options = {} } = payload;
+    <span class="hljs-keyword">if</span> (!message) { <span class="hljs-keyword">return</span> state }
+    <span class="hljs-keyword">const</span> doToast = getToastFunctionByType(type);
+    <span class="hljs-keyword">if</span> (doToast) {
+      <span class="hljs-keyword">const</span> opts = <span class="hljs-built_in">Object</span>.assign(TOAST_DEFAULT_OPTIONS, options);
+      doToast(message, opts);
+      <span class="hljs-keyword">return</span> payload;
+    }
+    <span class="hljs-keyword">return</span> state;
+  }
+};
+</code></pre>
+<p>
+  Đây là một <code>reducer function</code> trong <code>Redux</code>, nhiệm vụ
+  của nó là hiển thị <code>Toast</code> cho người dùng. Có vẻ như nó đã dễ đọc
+  hơn đoạn code 1 đúng không. Với đoạn code 2 này, tên biến, tên hàm đã được đặt
+  có nghĩa hơn, có <code>default parameter</code> để tránh trường hợp
+  <code>error</code> khi <code>access</code> đến <code>object&#39;s key</code>,
+  có check điều kiện để cải thiện <code>performance</code>. Và đặc biệt mình có
+  thể hiểu ngay ý nghĩa của <code>function</code> khi đọc lại mà không cần bất
+  cứ một dòng <code>comment</code> nào.\ \ Để giúp các bạn cải thiện hơn về
+  những kĩ năng này, mình sẽ liệt kê một vài điều bạn nên chú ý khi phát triển
+  bất cứ một <code>Souce Code</code> nào:
+</p>
+<h4 id="-1-t-t-n-bi-n-t-n-h-m-"><strong>1. Đặt tên biến + tên hàm</strong></h4>
+<p>
+  Đặt tên biến, tên hàm trước khi <code>implement</code> code luôn luôn là một
+  điều rất quan trọng cho một <code>source code</code> đẹp. Với các bạn mới bước
+  chân vào nghề và bắt đầu code những dự án thực tế, điều đầu tiên mình chỉ muốn
+  nói là đừng đi vào vết xe đổ của mình. Hãy tập thói quen đặt tên biến, tên hàm
+  có ý nghĩa ngay từ đầu, đó tất nhiên sẽ là một thói quen tốt.
+</p>
+<p>Đừng bao giờ đặt tên biến, tên hàm vô nghĩa hoặc không đúng nghĩa như là:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> a = ...;
+<span class="hljs-keyword">var</span> <span class="hljs-keyword">list</span> = ...;
+<span class="hljs-keyword">var</span> data = ...;
+<span class="hljs-keyword">var</span> result = ...;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getListData</span><span class="hljs-params">()</span> </span>{ 
+   <span class="hljs-comment">// ...</span>
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">parseData</span><span class="hljs-params">()</span> </span>{
+   <span class="hljs-comment">// ...</span>
+}
+</code></pre>
+<p>
+  Mà thay vào đó hãy cố gắng đặt tên có ý nghĩa, đúng cấu trúc ngữ pháp, tuân
+  thủ số nhiều số ít và áp dụng quy tắc
+  <a href="https://en.wikipedia.org/wiki/Camel_case">camelCase</a> như là:
+</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> user = ...;
+<span class="hljs-keyword">var</span> users = ...;
+<span class="hljs-keyword">var</span> product = ...;
+<span class="hljs-keyword">var</span> listUser = ...;
+<span class="hljs-keyword">var</span> usersArray = ...; 
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getListUser</span> <span class="hljs-params">()</span> </span>{
+   <span class="hljs-comment">// ...</span>
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">parseBoolean</span><span class="hljs-params">(value)</span> </span>{
+   <span class="hljs-comment">// ...</span>
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">parseInt</span><span class="hljs-params">(value)</span> </span>{
+   <span class="hljs-comment">// ...</span>
+}
+</code></pre>
+<p>
+  Mình đã từng nghe môt câu
+  <strong>&quot;Dành cả thanh xuân chỉ để đặt tên biến&quot;.</strong> Nếu bạn
+  nghĩ mãi chưa ra cái tên, hãy tập trung vào công dụng của <code>data</code>,
+  chức năng của <code>function</code>, rồi dựa vào đó để đặt tên cho chính xác.
+</p>
+<blockquote>
+  <p>
+    <em
+      >Tên dài hay ngắn không quan trọng, quan trọng là đúng nghĩa. Đừng để bản
+      thân trở thành một
+      <a href="https://javascript.info/ninja-code">Ninja Code</a></em
+    >
+  </p>
+</blockquote>
+<h4 id="-2-comment-"><strong>2. Comment</strong></h4>
+<p>
+  Theo những gì mình cảm nhận, <code>function</code> nào càng có nhiều
+  <code>comment</code> thì sẽ càng gây rối và khó đọc. Ở đây mình không nói để
+  lại <code>comment</code> là sai, nhưng hãy <code>comment</code> đúng nơi và
+  đúng lúc. Thay vì mang ý nghĩ <code>comment</code> lại để lần sau đọc cho dễ
+  hiểu, thì hãy tập trung đặt tên biến, tên hàm và xử lý
+  <code>logic code</code> đơn giản nhất có thể.
+</p>
+<p>
+  Chỉ khi nào <code>function</code> của bạn có một logic phức tạp rất khó để
+  diễn giải bằng <code>code</code>, hoặc bạn viết ra một
+  <code>document</code> cho mọi người dùng chung thì lúc đó bạn hãy nghĩ đến
+  việc để lại <code>comment</code>.
+</p>
+<blockquote>
+  <p>
+    Và nếu có để lại <code>comment</code> thì hãy nhớ follow theo
+    <a href="https://jsdoc.app/about-getting-started.html">JSDoc</a>
+  </p>
+</blockquote>
+<h4 id="-3-clear-v-split-function-">
+  <strong>3. Clear và Split Function</strong>
+</h4>
+<p>
+  <code>JavaScript</code> là một trường phái
+  <code>Functional Programming</code>, vì vậy mỗi <code>function</code> bạn tạo
+  ra chỉ nên có duy nhất một chức năng chính. Nếu bạn cảm thấy
+  <code>function</code> của bạn có thể tách nhỏ ra nữa và những
+  <code>function</code> nhỏ đó có thể dùng được ở những nơi khác thì hãy làm nó
+  ngay.
+</p>
+<p>
+  Trong qúa trình <code>implement code</code>, chắc chắn bạn sẽ có những đoạn
+  <code>code</code> bị lặp đi lặp lại rất nhiều lần. Ví dụ như nếu bạn làm việc
+  liên quan đến ngày tháng, chắc chắn bạn phải <code>format</code> ngày tháng
+  thành các định dạng dễ nhìn hơn để hiển thị cho người dùng.
+</p>
+<p>Thay vì tại mỗi hàm bạn phải dùng <code>moment().format()</code> như vậy:</p>
+<pre><code class="lang-javascript">import <span class="hljs-built_in">moment</span> from '<span class="hljs-built_in">moment</span>';
+
+const displayFromColumn = <span class="hljs-built_in">time</span> =&gt; <span class="hljs-built_in">moment</span>(<span class="hljs-built_in">time</span>).<span class="hljs-keyword">format</span>(<span class="hljs-string">"DD/MM/YYYY"</span>);
+const displayToColumn = <span class="hljs-built_in">time</span> =&gt; <span class="hljs-built_in">moment</span>(<span class="hljs-built_in">time</span>).<span class="hljs-keyword">format</span>(<span class="hljs-string">"DD/MM/YYYY"</span>);
+const displayDateCreatedColumn = <span class="hljs-built_in">time</span> =&gt; 
+  <span class="hljs-built_in">moment</span>(<span class="hljs-built_in">time</span>).<span class="hljs-keyword">format</span>(<span class="hljs-string">"DD/MM/YYY hh:mm:ss A"</span>);
+</code></pre>
+<p>Thì bây giờ các bạn có thể tách ra như sau:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> moment <span class="hljs-keyword">from</span> <span class="hljs-string">'moment'</span>;
+<span class="hljs-keyword">const</span> DATE_FORMAT = <span class="hljs-string">'MM/DD/YYYY'</span>;
+<span class="hljs-keyword">const</span> TIME_FORMAT = <span class="hljs-string">'hh:mm:ss A'</span>;
+<span class="hljs-keyword">const</span> DATE_TIME_FORMAT = <span class="hljs-string">`<span class="hljs-subst">${DATE_FORMAT}</span> <span class="hljs-subst">${TIME_FORMAT}</span>`</span>;
+<span class="hljs-keyword">const</span> formatDate = <span class="hljs-function"><span class="hljs-params">time</span> =&gt;</span> moment(time).format(DATE_FORMAT);
+<span class="hljs-keyword">const</span> formatDateTime = <span class="hljs-function"><span class="hljs-params">time</span> =&gt;</span> moment(time).format(DATE_TIME_FORMAT);
+
+
+<span class="hljs-keyword">const</span> displayFromColumn = <span class="hljs-function"><span class="hljs-params">time</span> =&gt;</span> formatDate(time);
+<span class="hljs-keyword">const</span> displayToColumn = <span class="hljs-function"><span class="hljs-params">time</span> =&gt;</span> formatDate(time);
+<span class="hljs-keyword">const</span> displayDateCreatedColumn = <span class="hljs-function"><span class="hljs-params">time</span> =&gt;</span> formatDateTime(time);
+</code></pre>
+<p>
+  Các bạn thấy <code>code</code> đã dễ <code>control</code> hơn rồi đúng không?
+  Khi muốn thay đổi <code>format</code>, bạn chỉ cần sửa một chỗ và tất cả mọi
+  nơi trong <code>project</code> sẽ tự động <code>applied</code>.
+</p>
+<blockquote>
+  <p>
+    Chú ý : Những hàm dùng chung mà bạn tạo ra, nên đưa nó vào một thư mục gọi
+    là <code>utils</code>. Khi nào cần dùng ta chỉ cần <code>import</code> chúng
+  </p>
+</blockquote>
+<p>Đây là một số hàm mình thường tạo ra trong <code>utils</code>:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> doFunctionWithEnter = <span class="hljs-function">(<span class="hljs-params">event, func</span>) =&gt;</span>
+  typeofevent === <span class="hljs-string">'object'</span> &amp;&amp;
+  event.key === <span class="hljs-string">'Enter'</span> &amp;&amp;
+  typeoffunc === <span class="hljs-string">'function'</span> &amp;&amp;
+  func();
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> parseBoolean = <span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span>
+  !value || value === <span class="hljs-string">"false"</span> || value === <span class="hljs-string">"null"</span> || value === <span class="hljs-string">"undefined"</span>
+    ? <span class="hljs-literal">false</span>
+    : <span class="hljs-literal">true</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> isAllOfTruthy = <span class="hljs-function">(<span class="hljs-params">arrValues = []</span>) =&gt;</span>
+  arrValues.every(<span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span> !!value);
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> isEmptyObject = <span class="hljs-function"><span class="hljs-params">object</span> =&gt;</span> !<span class="hljs-built_in">Object</span>.keys(object).length;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> formatPrice = <span class="hljs-function"><span class="hljs-params">value</span> =&gt;</span>
+  value ? value.toLocaleString(<span class="hljs-string">'it-IT'</span>, { <span class="hljs-attr">style</span>: <span class="hljs-string">'currency'</span>, <span class="hljs-attr">currency</span>: <span class="hljs-string">'VND'</span> })
+    : <span class="hljs-literal">null</span>
+</code></pre>
+<p>
+  Bây giờ mình có thể dùng những hàm này ở mọi nơi trong <code>project</code>.
+  Code tại những <code>function</code> chính của mình sẽ trở nên ngắn gọn và dễ
+  đọc hơn.
+</p>
+<h4 id="-4-logic-code-"><strong>4. Logic Code</strong></h4>
+<p>Các bạn nhìn lại đoạn code sau:</p>
+<pre><code class="lang-javascript">displayNotify(<span class="hljs-keyword">state</span> = {}, { type, payload = {} }) {
+  const { message, options = {} } = payload;
+  if (!message) { return <span class="hljs-keyword">state</span> }
+  const doToast = getToastFunctionByType(type);
+  if (doToast) {
+    const opts = Object.assign(TOAST_DEFAULT_OPTIONS, options);
+    doToast(message, opts);
+    return payload;
+  }
+  return <span class="hljs-keyword">state</span>;
+}
+</code></pre>
+<p>
+  Mình đã kiểm tra nếu không có <code>message</code> thì sẽ
+  <code>return function</code> luôn. Điều đó tránh được trường hợp khi dùng mình
+  truyền vào <code>message</code> là một giá trị <code>Falsy</code> thì
+  <code>function</code> luôn luôn phải <code>execute</code> tất cả dòng code.
+</p>
+<p>
+  Với đoạn code này, logic xử lý là rất ít. Các bạn thử tưởng tượng sau dòng
+  kiểm tra <code>message</code> của mình là một loạt các hàm bất đồng bộ như là
+  gọi <code>API</code> bên thứ 3, gọi <code>API</code> xuống
+  <code>Database</code>, ... và nếu bạn không kiểm tra thì
+  <code>function</code>của bạn luôn luôn phải tốn thời gian để xử lý.
+</p>
+<p>
+  Mình hy vọng những chia sẻ của mình có thể giúp các bạn cải thiện hơn trong
+  vấn đề <code>Coding Convention</code>.
+</p>
+<blockquote>
+  <p><code>Code for fun and Code for food</code></p>
+</blockquote>
+<p>To be continue ----&gt;</p>

@@ -10,6 +10,7 @@ import {
   FaAngleDoubleRight,
 } from 'react-icons/fa';
 import useWindowSize from '@/hooks/useWindowSize';
+import SwitchTheme from '@/components/Switch-Theme';
 
 const routes = [
   {
@@ -50,6 +51,8 @@ const Sidebar = ({
   title = 'Tech-Blog',
   authorName = 'Nguyen Dinh Thai',
   avatar = 'https://avatars2.githubusercontent.com/u/42630357?s=460&v=4',
+  onThemeChange,
+  themeValue,
 }) => {
   const { width } = useWindowSize();
   const [openDrawer, setOpenDrawer] = useState(true);
@@ -60,8 +63,14 @@ const Sidebar = ({
       setOpenDrawer(true);
     }
   }, [width]);
+
   return (
     <div className={`side-bar ${!openDrawer ? 'close' : ''}`}>
+      <SwitchTheme
+        onChange={onThemeChange}
+        small={!openDrawer}
+        value={themeValue}
+      />
       <Link to="/">
         <h1 className="side-bar--title">{title}</h1>
       </Link>

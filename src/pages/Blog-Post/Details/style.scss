@@ -1,0 +1,259 @@
+.blog-details {
+  margin: auto;
+  padding: 30px;
+  // max-width: 720px;
+  font-size: 16px;
+
+  @media (max-width: 414px) {
+    padding: 70px 16px 0;
+  }
+
+  h1 {
+    margin: 0.25em 0;
+  }
+
+  p {
+    line-height: 1.4rem;
+  }
+
+  a {
+    color: $m-text-code;
+    text-decoration: underline;
+  }
+
+  .datetime {
+    color: #8e8e8e;
+  }
+
+  /**
+   * based on zenburn.css
+   *
+   * Zenburn style from voldmar.ru (c) Vladimir Epifanov <voldmar@voldmar.ru>
+   * based on dark.css by Ivan Sagalaev
+   *
+   * change .markdown into .gatsby-highlight
+   * remove .hljs- prefix
+   */
+
+  blockquote {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    margin-top: 0;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.22474rem;
+    line-height: 1.5rem;
+    border-left: 0.25rem solid #eceeef;
+  }
+  pre {
+    display: block;
+    position: relative;
+    padding: 20px 0 0;
+    background: #193549;
+    color: #dcdcdc;
+    border-radius: 5px;
+    overflow-y: hidden;
+  }
+  pre:before {
+    display: inline-block;
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    width: 10px;
+    height: 10px;
+    background-color: #ff5f56;
+    border-radius: 50%;
+    content: '';
+  }
+  pre:after {
+    display: inline-block;
+    position: absolute;
+    top: 15px;
+    left: 40px;
+    width: 10px;
+    height: 10px;
+    background-color: #ffbd2e;
+    border-radius: 50%;
+    content: '';
+  }
+  pre code:before {
+    display: inline-block;
+    position: absolute;
+    top: 15px;
+    left: 60px;
+    width: 10px;
+    height: 10px;
+    background-color: #27c93f;
+    border-radius: 50%;
+    content: '';
+  }
+  pre code {
+    background: none;
+    border: none;
+    border-radius: 3px;
+    display: inline-block;
+    overflow: inherit;
+    padding: 1.58333rem;
+    white-space: inherit;
+    word-wrap: normal;
+    font-family: Inconsolata, monospace;
+  }
+  code:not(.language-javascript) {
+    font-family: D2Coding, 'D2 coding', monospace, serif;
+    max-width: 100%;
+    overflow: auto;
+    @include themify($themes) {
+      color: themed('codeColor');
+      background: themed('codeBackgroundColor');
+    }
+    padding-top: 0;
+    padding-left: 8px;
+    border-radius: 5px;
+    padding-right: 8px;
+    padding-bottom: 0;
+  }
+  .language-javascript {
+    position: relative;
+  }
+  pre code {
+    color: $m-text-1;
+    line-height: 1.4rem;
+  }
+  .copy-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 4px 8px;
+    line-height: 12px;
+    color: #263238;
+    background-color: #dcdcdc;
+    background-image: linear-gradient(#ededed, #dcdcdc);
+    outline: 0;
+    border: 1px solid #cbcbcb;
+    border-radius: 5px;
+    font-size: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    z-index: 3;
+  }
+  .copy-button:hover {
+    background-color: #dcdcdc;
+    background-image: linear-gradient(#dcdcdc, #cbcbcb);
+    border-color: #cbcbcb;
+  }
+  .copy-button:active {
+    background-color: #cbcbcb;
+    background-image: linear-gradient(#cbcbcb, #bababa);
+    border-color: #bababa;
+  }
+
+  .constant,
+  .function {
+    color: $m-blue;
+  }
+
+  .string {
+    color: $m-green;
+  }
+
+  // .punctuation,
+  .operator,
+  .keyword,
+  .tag,
+  .css .class,
+  .css .id,
+  .lisp .title,
+  .nginx .title,
+  .request,
+  .status,
+  .clojure .attribute {
+    // color: #e3ceab;
+    color: $m-purple;
+  }
+  .django .template_tag,
+  .django .variable,
+  .django .filter .argument {
+    color: #dcdcdc;
+  }
+  .number,
+  .date {
+    // color: #8cd0d3;
+    color: $m-orange;
+  }
+  .dos .envvar,
+  .dos .stream,
+  .variable,
+  .apache .sqbracket {
+    color: #efdcbc;
+  }
+  .dos .flow,
+  .diff .change,
+  .python .exception,
+  .python .built_in,
+  .literal,
+  .tex .special {
+    color: #efefaf;
+  }
+  .diff .chunk,
+  .subst {
+    color: #8f8f8f;
+  }
+  .dos .keyword,
+  .python .decorator,
+  .title,
+  .haskell .type,
+  .diff .header,
+  .ruby .class .parent,
+  .apache .tag,
+  .nginx .built_in,
+  .tex .command,
+  .prompt {
+    color: #efef8f;
+  }
+  .dos .winutils,
+  .ruby .symbol,
+  .ruby .symbol .string,
+  .ruby .string {
+    color: #dca3a3;
+  }
+  .diff .deletion,
+  // .string,
+  .tag .value,
+  .preprocessor,
+  .pragma,
+  .built_in,
+  .sql .aggregate,
+  .javadoc,
+  .smalltalk .class,
+  .smalltalk .localvars,
+  .smalltalk .array,
+  .css .rules .value,
+  .attr_selector,
+  .pseudo,
+  .apache .cbracket,
+  .tex .formula,
+  .coffeescript .attribute {
+    color: #cc9393;
+  }
+  .shebang,
+  .diff .addition,
+  .comment,
+  .java .annotation,
+  .template_comment,
+  .pi,
+  .doctype {
+    color: $m-text-2;
+  }
+  .coffeescript .javascript,
+  .javascript .xml,
+  .tex .formula,
+  .xml .javascript,
+  .xml .vbscript,
+  .xml .css,
+  .xml .cdata {
+    opacity: 0.5;
+  }
+}

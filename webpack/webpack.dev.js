@@ -11,7 +11,7 @@ const paths = require('../config/paths');
 const REACT_APP_PORT = process.env.REACT_APP_PORT || 3000;
 const host = process.env.HOST || '0.0.0.0';
 
-const { appPublic, appHtml } = paths;
+const { appPublic, appHtml, appBuild } = paths;
 
 module.exports = merge(common, {
   mode: 'development',
@@ -48,10 +48,12 @@ module.exports = merge(common, {
     // new BundleAnalyzerPlugin({ analyzerPort: REACT_APP_PORT })
   ],
   output: {
+    path: appBuild,
     // There will be one main bundle, and one file per asynchronous chunk.
     // In development, it does not produce real files.
     filename: 'static/js/bundle.js',
     // There are also additional JS chunk files if you use code splitting.
     chunkFilename: 'static/js/[name].chunk.js',
+    publicPath: '/',
   },
 });

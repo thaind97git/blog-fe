@@ -7,8 +7,9 @@
     flex-direction: column;
     flex: 1;
     overflow: auto;
-    color: #7e7e7e;
-    // min-height: calc(100vh - 100px);
-    // max-height: 100%;
+    @include themify($themes) {
+      color: themed('textColor');
+      background-image: themed('backgroundColor');
+    }
   }
 }

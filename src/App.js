@@ -23,7 +23,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const ReactApp = () => {
   return (
     <Router>
-      <Helmet titleTemplate="%s - React Starter" defaultTitle="React Starter">
+      <Helmet titleTemplate="%s - Tech Blog" defaultTitle="Tech Blog">
         <meta name="description" content="A React Starter application" />
       </Helmet>
 
