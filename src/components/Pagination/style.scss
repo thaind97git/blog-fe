@@ -1,0 +1,72 @@
+.pagination-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+  margin-bottom: 0 !important;
+  padding-inline-start: 0px !important;
+
+  &--active {
+    @include themify($themes) {
+      background: themed('paginationBackgroundColor');
+    }
+    background: $primary-color;
+    border-radius: 50%;
+
+    & > a {
+      color: white !important;
+    }
+  }
+
+  &--next,
+  &--previous {
+    cursor: pointer;
+
+    &.disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+    & > a {
+      outline: none;
+      font-size: 28px;
+      position: relative;
+      top: -1px;
+      @include themify($themes) {
+        color: themed('textColor');
+      }
+    }
+  }
+
+  &--next {
+    & > a {
+      padding-left: 8px;
+    }
+  }
+
+  &--previous {
+    & > a {
+      padding-right: 8px;
+    }
+  }
+
+  &--num {
+    & > a {
+      @include themify($themes) {
+        color: themed('textColor');
+      }
+      cursor: pointer;
+      outline: none;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 34px;
+      width: 32px;
+      height: 32px;
+      text-align: center;
+      vertical-align: middle;
+      display: inline-block;
+    }
+  }
+}

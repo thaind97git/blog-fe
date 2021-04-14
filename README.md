@@ -1,1 +1,1 @@
-# The React Starter with Webpack config manual
+# Tech blog designed by Alden Nguyen

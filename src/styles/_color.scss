@@ -39,12 +39,14 @@ $themes: (
     backgroundColor: linear-gradient(white, #f1f1f1),
     codeColor: #3b9cff,
     codeBackgroundColor: #e8e8e8,
+    paginationBackgroundColor: #3b9cff,
   ),
   dark: (
     textColor: #fff,
     backgroundColor: linear-gradient(#212121, #212121),
     codeColor: #66d9ef,
     codeBackgroundColor: #4e4e4e9c,
+    paginationBackgroundColor: #66d9ef,
   ),
 );
 

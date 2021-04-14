@@ -1,13 +1,4 @@
----
-title: >-
-  [ Chuyện của DEV - Phần 2 ] Control một Pull Request Trong Mô Hình Scrum với
-  Github
-date: '2020-02-26 17:30'
-tags:
-  - JavaScript
-  - Scrum
-  - GitHub
----
+# [ Chuyện của DEV - Phần 2 ] Control một Pull Request Trong Mô Hình Scrum với Github
 
 Xin chào các bạn, ở [bài viết trước](https://dev-blogs.netlify.com/2019-12-31-chuy%E1%BB%87n-c%E1%BB%A7a-dev-ph%E1%BA%A7n-1-t%E1%BB%91i-%C6%B0u-h%C3%B3a-source-code-v%E1%BB%9Bi-coding-convention/) mình đã chia sẻ một vài mẹo nhỏ để `source code` của bạn trở nên dễ đọc và tối ưu hơn. Ở lần này mình sẽ giúp các bạn hiểu rõ hơn về một quy trình làm việc rất quan trọng cho những môi trường `start-up` hay những team nhỏ, nó cũng là một văn hóa làm việc giúp bạn trở nên chuyên nghiệp hơn trong quá trình phát triển bản thân. Đó chính là quy trình `nhận và hoàn thành tasks` với mô hình [Scrum ](https://www.scrum.org/)thông qua `GitHub`.
 

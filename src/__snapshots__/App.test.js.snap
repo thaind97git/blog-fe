@@ -3,10 +3,10 @@
 exports[`renders <App/> without crashing 1`] = `
 <BrowserRouter>
   <Helmet
-    defaultTitle="React Starter"
+    defaultTitle="Tech Blog"
     defer={true}
     encodeSpecialCharacters={true}
-    titleTemplate="%s - React Starter"
+    titleTemplate="%s - Tech Blog"
   >
     <meta
       content="A React Starter application"

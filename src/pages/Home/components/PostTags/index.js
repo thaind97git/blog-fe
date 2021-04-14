@@ -10,9 +10,9 @@ const PostTags = ({ tags }) => {
           separator = '';
         }
         return (
-          <span key={tag}>
-            <Link className="post-tags--link" to={`tags/${tag}`}>
-              {tag}
+          <span key={tag.title || index}>
+            <Link className="post-tags--link" to={`tags/${tag.slug}`}>
+              {tag.title}
             </Link>
             {separator}
           </span>

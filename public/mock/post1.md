@@ -1,9 +1,4 @@
----
-title: '[ Chuyện của DEV - Phần 1 ] Tối Ưu Hóa Source Code Với Coding Convention'
-date: '2020-01-06 11:01'
-tags:
-  - JavaScript
----
+# [ Chuyện của DEV - Phần 1 ] Tối Ưu Hóa Source Code Với Coding Convention
 
 Xin chào mọi người ! Mình là Thái, hiện tại mình đang làm vị trí `Front-End Developer`. Mình viết ra Series `Chuyện của DEV` này mong muốn chia sẻ những kinh nghiệm ít ỏi của mình, giúp những bạn `DEV` mới vào nghề có cái nhìn sâu hơn về những thứ mà các bạn sẽ phải trải qua trong qúa trình đi làm. Giúp các bạn có thể cải thiện hơn về `performance` trong qúa trình làm việc.
 

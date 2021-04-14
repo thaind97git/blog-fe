@@ -24,7 +24,7 @@ const ReactApp = () => {
   return (
     <Router>
       <Helmet titleTemplate="%s - Tech Blog" defaultTitle="Tech Blog">
-        <meta name="description" content="A React Starter application" />
+        <meta name="description" content="Tech blog designed by Alden Nguyen" />
       </Helmet>
 
       <ConnectedRouter history={history}>
