@@ -1,0 +1,10 @@
+.empty-record {
+  text-align: center;
+  &-title {
+    font-size: 1.6rem;
+  }
+  &-desc {
+    font-size: 1rem;
+    color: gray;
+  }
+}

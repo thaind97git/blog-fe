@@ -23,7 +23,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const ReactApp = () => {
   return (
     <Router>
-      <Helmet titleTemplate="%s - Tech Blog" defaultTitle="Tech Blog">
+      <Helmet titleTemplate="%s - Alden Nguyen" defaultTitle="Alden Nguyen">
         <meta name="description" content="Tech blog designed by Alden Nguyen" />
       </Helmet>
 

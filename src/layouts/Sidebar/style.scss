@@ -59,6 +59,8 @@
 
     a {
       cursor: pointer;
+      display: flex;
+      align-items: center;
     }
 
     &--socials {

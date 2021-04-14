@@ -9,7 +9,7 @@ const Pagination = ({
 }) => {
   const [pageIndex, setPageIndex] = useState(pageIndexProp - 1);
   const totalPage = Math.ceil(totalCount / pageSize);
-  if (totalPage <= 0) {
+  if (!totalPage) {
     return null;
   }
   return (

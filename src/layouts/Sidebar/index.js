@@ -3,14 +3,17 @@ import { Link } from 'react-router-dom';
 import {
   FaHome,
   FaUserSecret,
-  FaGithub,
   FaHashtag,
-  FaStackOverflow,
   FaAngleDoubleLeft,
   FaAngleDoubleRight,
+  FaBlogger,
 } from 'react-icons/fa';
 import useWindowSize from '@/hooks/useWindowSize';
+import useGetRequest from '@/hooks/useGetRequest';
 import SwitchTheme from '@/components/Switch-Theme';
+import Socials from './components/Socials';
+import Tooltip from '@/components/Tooltip';
+import { getSocials } from '@/apis/profile';
 
 const routes = [
   {
@@ -24,26 +27,14 @@ const routes = [
     icon: FaUserSecret,
   },
   {
+    link: '/blogs',
+    label: 'Blogs',
+    icon: FaBlogger,
+  },
+  {
     link: '/tags',
     label: 'Tags',
     icon: FaHashtag,
-  },
-];
-
-const socials = [
-  {
-    name: 'Github',
-    code: 'github',
-    link: 'https://github.com/thaind97git',
-    id: 'd929df16-54c5-49f6-b57b-cf33bb843123',
-    icon: FaGithub,
-  },
-  {
-    name: 'Stackoverflow',
-    code: 'stackoverflow',
-    link: 'https://stackoverflow.com/users/11637854/judonguyen',
-    id: '173c7111-711c-454a-8e18-d1368dd15b8f',
-    icon: FaStackOverflow,
   },
 ];
 
@@ -56,6 +47,11 @@ const Sidebar = ({
 }) => {
   const { width } = useWindowSize();
   const [openDrawer, setOpenDrawer] = useState(true);
+
+  const { data: socials, fetching: fetchingSocials } = useGetRequest({
+    promiseFunction: getSocials,
+  });
+
   useEffect(() => {
     if (width <= 767) {
       setOpenDrawer(false);
@@ -78,13 +74,17 @@ const Sidebar = ({
       <h5 className="side-bar--name">{authorName}</h5>
       <div className="side-bar--menu-wrap">
         <div>
-          {routes.map(route => {
+          {routes.map(({ label, link, icon: Icon }) => {
             return (
-              <p key={route.label}>
-                <Link to={route.link}>
-                  <route.icon /> <span>{route.label}</span>
-                </Link>
-              </p>
+              <Tooltip tooltipId={label} title={label} key={label}>
+                <p key={label}>
+                  <Link to={link}>
+                    <Icon />
+                    <span>&nbsp;</span>
+                    <span>{label}</span>
+                  </Link>
+                </p>
+              </Tooltip>
             );
           })}
         </div>
@@ -93,17 +93,7 @@ const Sidebar = ({
             <span>Socials</span>
           </p>
         </div>
-        <div>
-          {socials.map(social => {
-            return (
-              <p key={social.id}>
-                <a href={social.link} rel="noopener noreferrer" target="_blank">
-                  <social.icon /> <span>{social.name}</span>
-                </a>
-              </p>
-            );
-          })}
-        </div>
+        <Socials socials={socials?.results} fetching={fetchingSocials} />
       </div>
       <div
         onClick={() => setOpenDrawer(prev => !prev)}

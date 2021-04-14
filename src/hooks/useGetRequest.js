@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
+import axios from 'axios';
 import { setLoading } from '@/store/actions';
 import HttpRequest from '@/services/http-request';
-import axios from 'axios';
 
 const useGetRequest = ({
   promiseFunction,
@@ -40,6 +40,7 @@ const useGetRequest = ({
     }
     // add loading for api request
     callLoading(true, isLoading);
+    // setFetching(true);
 
     requestFunc
       .then(response => {
@@ -60,7 +61,7 @@ const useGetRequest = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [url, promiseFunction, refresh]);
 
-  return { data, error };
+  return { data, error, fetching: !data && !error };
 };
 
 export default useGetRequest;

@@ -1,15 +1,15 @@
 import React from 'react';
-import { postTimeFormat } from '@/utils';
 import { Link } from 'react-router-dom';
 
-import PostTags from '../PostTags';
 import EmptyRecord from '@/components/Empty-Record';
+import PostTags from '../PostTags';
+import { postTimeFormat } from '@/utils';
 
-const PostList = ({ posts }) => {
-  if (!posts) {
+const PostList = ({ posts, fetching = false }) => {
+  if (fetching) {
     return null;
   }
-  if (posts.length === 0) {
+  if (!posts || posts.length === 0) {
     return (
       <EmptyRecord title="No Records Found" description="Please try again" />
     );
@@ -23,7 +23,7 @@ const PostList = ({ posts }) => {
               {postTimeFormat(blog.publishedAt)}
             </span>{' '}
             <PostTags tags={blog.tags} />
-            <Link className="blog-item--link" to={blog.slug}>
+            <Link className="blog-item--link" to={`/blogs/${blog.slug}`}>
               <h3 className="blog-item--title">{blog.title} </h3>
             </Link>
             <p>{blog.metaTitle}</p>
