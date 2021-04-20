@@ -1,0 +1,21 @@
+.tag {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @include themify($themes) {
+    background-color: themed('resumeBackgroundColor');
+    border-left: 1px solid themed('textColor');
+  }
+  margin: 0 8px 8px 0;
+  padding: 4px 8px;
+  width: 25%;
+
+  &--count {
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 50%;
+    @include themify($themes) {
+      background-color: themed('backgroundColor');
+    }
+  }
+}

@@ -17,6 +17,7 @@ const Tooltip = ({
   effect = 'solid',
   tooltipId,
   title = 'Tooltip',
+  disable = true,
   ...others
 }) => {
   const theme = useShallowEqualSelector(getTheme);
@@ -30,6 +31,7 @@ const Tooltip = ({
         {children}
       </div>
       <ReactTooltip
+        disable={disable}
         type={getTooltipTypeByTheme(theme)}
         id={tooltipId}
         effect={effect}

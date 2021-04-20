@@ -2,7 +2,7 @@ import React from 'react';
 import Tooltip from '@/components/Tooltip';
 import { SOCIAL_ICONS } from '../../constant/socials';
 
-const Socials = ({ socials = [], fetching }) => {
+const Socials = ({ socials = [], fetching, openDrawer }) => {
   if (fetching) {
     return null;
   }
@@ -15,6 +15,7 @@ const Socials = ({ socials = [], fetching }) => {
         const Icon = SOCIAL_ICONS[social.code];
         return (
           <Tooltip
+            disable={openDrawer}
             tooltipId={social.name}
             title={social.name}
             key={social.id || social.name}

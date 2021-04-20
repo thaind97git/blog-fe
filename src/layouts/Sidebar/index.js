@@ -59,6 +59,7 @@ const Sidebar = ({
       setOpenDrawer(true);
     }
   }, [width]);
+  console.log({ openDrawer });
 
   return (
     <div className={`side-bar ${!openDrawer ? 'close' : ''}`}>
@@ -76,7 +77,12 @@ const Sidebar = ({
         <div>
           {routes.map(({ label, link, icon: Icon }) => {
             return (
-              <Tooltip tooltipId={label} title={label} key={label}>
+              <Tooltip
+                disable={openDrawer}
+                tooltipId={label}
+                title={label}
+                key={label}
+              >
                 <p key={label}>
                   <Link to={link}>
                     <Icon />
@@ -93,7 +99,11 @@ const Sidebar = ({
             <span>Socials</span>
           </p>
         </div>
-        <Socials socials={socials?.results} fetching={fetchingSocials} />
+        <Socials
+          openDrawer={openDrawer}
+          socials={socials?.results}
+          fetching={fetchingSocials}
+        />
       </div>
       <div
         onClick={() => setOpenDrawer(prev => !prev)}

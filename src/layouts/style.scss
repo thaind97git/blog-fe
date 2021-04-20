@@ -9,7 +9,7 @@
     overflow: auto;
     @include themify($themes) {
       color: themed('textColor');
-      background-image: themed('backgroundColor');
+      background-color: themed('backgroundColor');
     }
   }
 }
