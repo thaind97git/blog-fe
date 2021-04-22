@@ -1,6 +1,6 @@
+import React from 'react';
 import { getTags } from '@/apis/tag';
 import useGetRequest from '@/hooks/useGetRequest';
-import React from 'react';
 import Tag from './components/Tag';
 
 const Tags = () => {
@@ -13,9 +13,13 @@ const Tags = () => {
   }
   return (
     <div className="list-of-tag">
-      {tags.results.map((tag, index) => (
-        <Tag key={tag.id || index} tag={tag} />
-      ))}
+      {fetchingTags ? (
+        <span>Fetching...</span>
+      ) : (
+        tags.results.map((tag, index) => (
+          <Tag key={tag.id || index} tag={tag} />
+        ))
+      )}
     </div>
   );
 };
