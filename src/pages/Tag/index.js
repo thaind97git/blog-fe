@@ -3,6 +3,8 @@ import { getTags } from '@/apis/tag';
 import useGetRequest from '@/hooks/useGetRequest';
 import Tag from './components/Tag';
 
+import { ensureArray } from '@/utils';
+
 const Tags = () => {
   const { data: tags, fetching: fetchingTags } = useGetRequest({
     promiseFunction: getTags,
@@ -16,7 +18,7 @@ const Tags = () => {
       {fetchingTags ? (
         <span>Fetching...</span>
       ) : (
-        tags.results.map((tag, index) => (
+        ensureArray(tags?.results).map((tag, index) => (
           <Tag key={tag.id || index} tag={tag} />
         ))
       )}
