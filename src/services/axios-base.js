@@ -4,8 +4,9 @@ import axios from 'axios';
 // Make an 'instance' of axios
 const instance = axios.create({
   // .. where we make our configurations
-  baseURL: `${process.env.REACT_APP_API_SERVER_URL}/v1`,
+  baseURL: process.env.REACT_APP_API_SERVER_URL,
 });
+console.log({ instance });
 
 // Where you would set stuff like your 'Authorization' header, etc ...
 instance.defaults.headers = getHeaders();

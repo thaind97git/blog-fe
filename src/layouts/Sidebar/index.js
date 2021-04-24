@@ -9,11 +9,9 @@ import {
   FaBlogger,
 } from 'react-icons/fa';
 import useWindowSize from '@/hooks/useWindowSize';
-import useGetRequest from '@/hooks/useGetRequest';
 import SwitchTheme from '@/components/Switch-Theme';
 import Socials from './components/Socials';
 import Tooltip from '@/components/Tooltip';
-import { getSocials } from '@/apis/profile';
 
 const routes = [
   {
@@ -48,10 +46,6 @@ const Sidebar = ({
   const { width } = useWindowSize();
   const [openDrawer, setOpenDrawer] = useState(true);
 
-  const { data: socials, fetching: fetchingSocials } = useGetRequest({
-    promiseFunction: getSocials,
-  });
-
   useEffect(() => {
     if (width <= 767) {
       setOpenDrawer(false);
@@ -59,7 +53,6 @@ const Sidebar = ({
       setOpenDrawer(true);
     }
   }, [width]);
-  console.log({ openDrawer });
 
   return (
     <div className={`side-bar ${!openDrawer ? 'close' : ''}`}>
@@ -99,11 +92,7 @@ const Sidebar = ({
             <span>Socials</span>
           </p>
         </div>
-        <Socials
-          openDrawer={openDrawer}
-          socials={socials?.results}
-          fetching={fetchingSocials}
-        />
+        <Socials openDrawer={openDrawer} />
       </div>
       <div
         onClick={() => setOpenDrawer(prev => !prev)}

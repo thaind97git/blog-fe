@@ -1,24 +1,36 @@
 import React from 'react';
+
+import { getSocials } from '@/apis/profile';
+
+import useGetRequest from '@/hooks/useGetRequest';
 import Tooltip from '@/components/Tooltip';
+
+import { ensureArray } from '@/utils';
 import { SOCIAL_ICONS } from '../../constant/socials';
 
-const Socials = ({ socials = [], fetching, openDrawer }) => {
-  if (fetching) {
+const Socials = ({ openDrawer }) => {
+  const { data: socials, fetching: fetchingSocials } = useGetRequest({
+    promiseFunction: getSocials,
+  });
+
+  console.log({ socials });
+
+  if (fetchingSocials) {
     return null;
   }
-  if (!socials || socials.length === 0) {
+  if (!socials || socials?.results?.length === 0) {
     return <span>No Available</span>;
   }
   return (
     <div className="social-list">
-      {socials.map(social => {
+      {ensureArray(socials?.results).map(social => {
         const Icon = SOCIAL_ICONS[social.code];
         return (
           <Tooltip
             disable={openDrawer}
-            tooltipId={social.name}
+            tooltipId={social.id}
             title={social.name}
-            key={social.id || social.name}
+            key={social.id}
           >
             <p>
               <a
@@ -27,7 +39,7 @@ const Socials = ({ socials = [], fetching, openDrawer }) => {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <Icon />
+                {Icon && <Icon />}
                 <span>&nbsp;</span>
                 <span>{social.name}</span>
               </a>

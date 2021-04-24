@@ -10,6 +10,8 @@ const useGetRequest = ({
   config = {},
   isLoading = true,
   refresh,
+  triggerCondition = true,
+  param = {},
 }) => {
   const [data, setData] = useState(undefined);
   const [error, setError] = useState(undefined);
@@ -25,6 +27,11 @@ const useGetRequest = ({
   );
 
   useEffect(() => {
+    if (!triggerCondition) {
+      return;
+    }
+    setData(undefined);
+    setError(undefined);
     let requestFunc;
     const source = axios.CancelToken.source();
     const configAxios = Object.assign(
@@ -34,7 +41,7 @@ const useGetRequest = ({
     );
 
     if (typeof promiseFunction === 'function') {
-      requestFunc = promiseFunction(configAxios);
+      requestFunc = promiseFunction(param, configAxios);
     } else {
       requestFunc = HttpRequest.get(url, configAxios);
     }
