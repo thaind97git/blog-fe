@@ -34,6 +34,11 @@
     margin-bottom: 1.3em;
     flex: 1 1 0%;
 
+    &:nth-of-type(1) hr {
+      height: 0px;
+      margin: 8px 0px;
+    }
+
     &--left {
       padding: 0;
       display: flex;
@@ -48,6 +53,10 @@
       display: flex;
       flex-direction: column;
       flex: 0.8 1 0%;
+
+      hr {
+        width: 100%;
+      }
 
       li {
         list-style: square;
@@ -73,10 +82,6 @@
       &--sub-title {
         font-size: 14px;
         margin-bottom: 4px;
-      }
-
-      hr {
-        width: 100%;
       }
 
       &--skill {
