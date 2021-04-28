@@ -82,13 +82,13 @@
 
       .skeleton--hr {
         height: 2px;
-        width: calc('100% - 20px');
+        width: calc(100% - 20px);
         margin: 0 10px 10px;
       }
 
       .skeleton--line {
         height: 10px;
-        width: calc('100% - 20px');
+        width: calc(100% - 20px);
         margin: 10px;
 
         &.skeleton--line__short {
