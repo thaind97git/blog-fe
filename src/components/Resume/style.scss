@@ -1,7 +1,6 @@
 .resume {
   max-width: 800px;
   margin: auto;
-  // width: 100%;
   padding: 3em 1.8em 1.8em;
   @include themify($themes) {
     background-color: themed('resumeBackgroundColor');
@@ -18,7 +17,6 @@
       font-size: 30px;
       font-weight: bold;
       @include themify($themes) {
-        // background-color: themed('resumeBackgroundColor');
         border-left: 4px solid themed('textColor');
       }
       display: flex;
@@ -36,11 +34,6 @@
     margin-bottom: 1.3em;
     flex: 1 1 0%;
 
-    h1,
-    h2 {
-      margin: 0;
-    }
-
     &--left {
       padding: 0;
       display: flex;
@@ -52,18 +45,51 @@
     }
 
     &--right {
-      // padding-top: 1.3em;
-      // border-top: 1px solid rgba(0, 0, 0, 0.2);
-      // @include themify($themes) {
-      //   border-top: 1px solid themed('textColor');
-      // }
       display: flex;
       flex-direction: column;
       flex: 0.8 1 0%;
 
+      li {
+        list-style: square;
+        line-height: 1.4rem;
+      }
+
+      p {
+        margin-top: 0px;
+      }
+
+      &--title {
+        margin: 0;
+        margin-top: 20px;
+        margin-bottom: 4px;
+        font-weight: 600;
+        font-size: 1.4em;
+
+        &:nth-of-type(1) {
+          margin-top: 0px;
+        }
+      }
+
+      &--sub-title {
+        font-size: 14px;
+        margin-bottom: 4px;
+      }
+
       hr {
         width: 100%;
-        // margin-top: 0;
+      }
+
+      &--skill {
+        margin: 0;
+        display: flex;
+        flex-direction: row;
+        flex: 1 1;
+        flex-wrap: wrap;
+
+        &--item {
+          flex-basis: 44%;
+          margin: 0 3%;
+        }
       }
     }
   }

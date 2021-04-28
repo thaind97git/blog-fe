@@ -1,39 +1,38 @@
 import React from 'react';
+import { ensureArray } from '@/utils';
+import RightContent from './RightContent';
 
 const Resume = ({
-  name = 'Thai Nguyen',
-  email = 'thaind97.dev@gmail.com',
-  phone = '0934496440',
-  address = '41 - 30 Street, District Thu Duc',
+  profile = {
+    name: 'Thai Nguyen',
+    email: 'thaind97.dev@gmail.com',
+    phone: '0934496440',
+    address: '41 - 30 Street, District Thu Duc',
+  },
+  sections = [],
 }) => {
   return (
     <div className="resume">
       <div className="resume--header">
-        <div className="resume--header--left">{name}</div>
+        <div className="resume--header--left">{profile.name}</div>
         <div className="resume--header--right">
-          <span>{email}</span>
+          <span>{profile.email}</span>
           <br />
-          <span>{phone}</span>
+          <span>{profile.phone}</span>
           <br />
-          <span>{address}</span>
+          <span>{profile.address}</span>
         </div>
       </div>
-      <section className="resume--section">
-        <div className="resume--section--left">Education</div>
-        <div className="resume--section--right">
-          <hr />
-          <h2>Software Engineer</h2>
-          <span>FPT University - Ho Chi Minh, District 9</span>
-        </div>
-      </section>
-      <section className="resume--section">
-        <div className="resume--section--left">Employee History</div>
-        <div className="resume--section--right">
-          <hr />
-          <h2>Web Developer</h2>
-          <span>Wao Company - Ho Chi Minh, Binh Thanh District</span>
-        </div>
-      </section>
+      {ensureArray(sections).map(section => {
+        return (
+          <section key={section.id} className="resume--section">
+            <div className="resume--section--left">{section.sectionTitle}</div>
+            <div className="resume--section--right">
+              <RightContent resume={section} />
+            </div>
+          </section>
+        );
+      })}
     </div>
   );
 };

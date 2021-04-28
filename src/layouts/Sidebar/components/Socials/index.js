@@ -13,8 +13,6 @@ const Socials = ({ openDrawer }) => {
     promiseFunction: getSocials,
   });
 
-  console.log({ socials });
-
   if (fetchingSocials) {
     return null;
   }
