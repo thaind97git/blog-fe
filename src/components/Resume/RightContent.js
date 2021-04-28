@@ -58,15 +58,17 @@ const RightContent = ({ resume }) => {
       ) : (
         <Content resume={resume} />
       )}
-      {ensureArray(resume.subSections).map(resume => (
-        <Fragment key={resume.id}>
-          {ensureArray(resume.skills).length ? (
-            <Skills resume={resume} />
-          ) : (
-            <Content resume={resume} />
-          )}
-        </Fragment>
-      ))}
+      {ensureArray(resume.subSections)
+        .sort((x, y) => x.subPosition - y.subPosition)
+        .map(resume => (
+          <Fragment key={resume.id}>
+            {ensureArray(resume.skills).length ? (
+              <Skills resume={resume} />
+            ) : (
+              <Content resume={resume} />
+            )}
+          </Fragment>
+        ))}
     </>
   );
 };
