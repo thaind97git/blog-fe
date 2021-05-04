@@ -23,8 +23,19 @@ import 'react-toastify/dist/ReactToastify.css';
 const ReactApp = () => {
   return (
     <Router>
-      <Helmet titleTemplate="%s - Alden Nguyen" defaultTitle="Alden Nguyen">
-        <meta name="description" content="Tech blog designed by Alden Nguyen" />
+      <Helmet titleTemplate="%s - aldenn" defaultTitle="aldenn">
+        <meta name="og:url" content="https://aldenn.vercel.app" />
+        <meta name="og:title" content="aldenn resume" />
+        <meta
+          name="og:description"
+          content="Tech blog designed by Alden Nguyen"
+        />
+        <meta
+          name="og:image"
+          content="https://avatars2.githubusercontent.com/u/42630357?s=460&v=4"
+        />
+        <meta name="og:type" content="website" />
+        {/* <meta name="fb:app_id" content={facebook.appId} /> */}
       </Helmet>
 
       <ConnectedRouter history={history}>
