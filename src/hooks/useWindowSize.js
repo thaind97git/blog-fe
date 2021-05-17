@@ -13,15 +13,15 @@ function off(obj, ...args) {
 
 const useWindowSize = (initialWidth = Infinity, initialHeight = Infinity) => {
   const [state, setState] = useState({
-    width: isBrowser ? window.innerWidth : initialWidth,
-    height: isBrowser ? window.innerHeight : initialHeight,
+    width: isBrowser ? window.outerWidth : initialWidth,
+    height: isBrowser ? window.outerHeight : initialHeight,
   });
   useEffect(() => {
     if (isBrowser) {
       const handler = () => {
         setState({
-          width: window.innerWidth,
-          height: window.innerHeight,
+          width: window.outerWidth,
+          height: window.outerHeight,
         });
       };
       on(window, 'resize', handler);
