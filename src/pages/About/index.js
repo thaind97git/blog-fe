@@ -24,11 +24,9 @@ const About = () => {
         <hr />
         <div className="about--socials">
           <div>
-            My Stackoverflow
             <Stackoverflow />
           </div>
           <div>
-            My Github
             <GitHub />
           </div>
         </div>

@@ -8,7 +8,7 @@ const Stackoverflow = () => {
       rel="noopener noreferrer"
     >
       <img
-        src="https://stackoverflow.com/users/flair/11637854.png?theme=light"
+        src="https://stackoverflow.com/users/flair/11637854.png?theme=clean"
         width="208"
         height="58"
         alt="profile for jdn at Stack Overflow, Q&amp;A for professional and enthusiast programmers"
