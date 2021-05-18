@@ -4,7 +4,7 @@ export const getPostDetailsByParam = param =>
   HttpRequest.get(`/posts/${param}`);
 
 export const getPostDetailsBySlug = ({ slug }) =>
-  slug && HttpRequest.get(`/posts/slug/${slug}`);
+  HttpRequest.get(`/posts/slug/${slug}`);
 
 export const getAllPost = () => HttpRequest.get('/posts/all');
 

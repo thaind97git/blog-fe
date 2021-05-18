@@ -14,7 +14,7 @@ const BlogPost = () => {
 
   const { data: posts = {}, fetching: fetchingPosts } = useGetRequest({
     promiseFunction: getPostPaging,
-    config: { pageIndex, pageSize: 10 },
+    param: { pageIndex, pageSize: 10 },
     refresh: refreshPost,
   });
 

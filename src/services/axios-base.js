@@ -6,10 +6,20 @@ const instance = axios.create({
   // .. where we make our configurations
   baseURL: process.env.REACT_APP_API_SERVER_URL,
 });
-console.log({ instance });
 
 // Where you would set stuff like your 'Authorization' header, etc ...
 instance.defaults.headers = getHeaders();
+
+instance.interceptors.request.use(
+  request => {
+    request.params = {};
+    request.params['fromOrigin'] = 'client';
+    return request;
+  },
+  error => {
+    return Promise.reject(error.message);
+  },
+);
 
 // Add configure interceptors && all the other cool stuff
 instance.interceptors.response.use(

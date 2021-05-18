@@ -1,15 +1,24 @@
 .blog-details {
   margin: auto;
   padding: 30px;
-  // max-width: 720px;
   font-size: 16px;
 
   @media (max-width: 414px) {
     padding: 70px 16px 0;
   }
 
-  h1 {
-    margin: 0.25em 0;
+  h1,
+  h2,
+  h3,
+  h4 {
+    line-height: 1.25;
+    margin-top: 1.55rem;
+    margin-bottom: 0.775rem;
+    letter-spacing: -0.04rem;
+  }
+
+  img {
+    width: 100%;
   }
 
   p {
@@ -36,19 +45,14 @@
    */
 
   blockquote {
-    margin-left: 1.5rem;
-    margin-right: 1.5rem;
-    margin-top: 0;
-    padding-bottom: 0.5rem;
+    font-style: italic;
     padding-left: 1rem;
-    padding-right: 1rem;
-    padding-top: 0.5rem;
-    margin-bottom: 1.5rem;
-    font-size: 1.22474rem;
-    line-height: 1.5rem;
-    border-left: 0.25rem solid #eceeef;
+    margin-left: 0px;
+    margin-right: 0px;
+    border-left: 0.25rem solid rgba(25, 53, 73, 0.5);
   }
   pre {
+    margin: 14px;
     display: block;
     position: relative;
     padding: 20px 0 0;
@@ -56,6 +60,7 @@
     color: #dcdcdc;
     border-radius: 5px;
     overflow-y: hidden;
+    font-size: 14px;
   }
   pre:before {
     display: inline-block;
@@ -116,9 +121,6 @@
     padding-right: 8px;
     padding-bottom: 0;
   }
-  .language-javascript {
-    position: relative;
-  }
   pre code {
     color: $m-text-1;
     line-height: 1.4rem;
@@ -172,7 +174,7 @@
   .status,
   .clojure .attribute {
     // color: #e3ceab;
-    color: $m-purple;
+    color: $m-cyan2;
   }
   .django .template_tag,
   .django .variable,
