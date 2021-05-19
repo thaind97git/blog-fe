@@ -3,10 +3,10 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { history } from '@/store';
 import { ConnectedRouter } from 'connected-react-router';
 import { ToastContainer } from 'react-toastify';
-import { Helmet } from 'react-helmet-async';
 
 import Layout from '@/layouts';
 import PageLoading from '@/components/Page-Loading';
+import SEO from '@/components/SEO';
 
 // multi language
 // import '@/locales'
@@ -23,20 +23,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const ReactApp = () => {
   return (
     <Router>
-      <Helmet titleTemplate="%s - aldenn" defaultTitle="aldenn">
-        <meta name="og:url" content="https://aldenn.vercel.app" />
-        <meta name="og:title" content="aldenn resume" />
-        <meta
-          name="og:description"
-          content="Tech blog designed by Alden Nguyen"
-        />
-        <meta
-          name="og:image"
-          content="https://avatars2.githubusercontent.com/u/42630357?s=460&v=4"
-        />
-        <meta name="og:type" content="website" />
-        {/* <meta name="fb:app_id" content={facebook.appId} /> */}
-      </Helmet>
+      <SEO />
 
       <ConnectedRouter history={history}>
         <Suspense fallback={<PageLoading show />}>
