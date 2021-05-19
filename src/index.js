@@ -1,17 +1,25 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { hydrate, render } from 'react-dom';
 import { Provider } from 'react-redux';
 import store from '@/store';
 import { HelmetProvider } from 'react-helmet-async';
 import App from './App';
 
-ReactDOM.render(
-  <Provider store={store}>
-    <HelmetProvider>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
-    </HelmetProvider>
-  </Provider>,
-  document.getElementById('root'),
-);
+const AppRoot = () => {
+  return (
+    <Provider store={store}>
+      <HelmetProvider>
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      </HelmetProvider>
+    </Provider>
+  );
+};
+
+const rootElement = document.getElementById('root');
+if (rootElement.hasChildNodes()) {
+  hydrate(<AppRoot />, rootElement);
+} else {
+  render(<AppRoot />, rootElement);
+}
