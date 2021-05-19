@@ -1,13 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const Tag = ({ tag }) => {
-  const { slug, title, blogCount = 3 } = tag || {};
+  const { title, blogCount = 3 } = tag || {};
   return (
-    <Link className="tag" to={`/tags/${slug}`}>
+    // <Link className="tag" to={`/tags/${slug}`}>
+    <div className="tag">
       <div className="tag--title">{title}</div>
       <div className="tag--count">{blogCount}</div>
-    </Link>
+    </div>
+    // </Link>
   );
 };
 
