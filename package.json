@@ -12,6 +12,12 @@
     "format": "prettier --write \"**/*.+(js|jsx|ts|json|css|md)\"",
     "postbuild": "react-snap"
   },
+  "reactSnap": {
+    "puppeteerArgs": [
+      "--no-sandbox",
+      "--disable-setuid-sandbox"
+    ]
+  },
   "lint-staged": {
     "*.+(js|jsx|ts)": "eslint --max-warnings 0 --fix",
     "*.+(js|jsx|ts|json|css|md)": "prettier --write"
