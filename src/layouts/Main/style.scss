@@ -4,8 +4,13 @@
   // margin: 0 auto;
   // padding: 20px;
 
-  padding: 20px;
+  width: 100%;
   max-width: 800px;
-  // min-height: calc(100vh - 100px);
-  margin: 0 auto;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
+  & #main-content {
+    padding: 20px;
+  }
 }

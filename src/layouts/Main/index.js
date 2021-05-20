@@ -23,23 +23,30 @@ const Main = () => {
 
   return (
     <div id="main" className="container">
-      <Switch>
-        {routes.map(
-          ({ component: Component, path, layout: currentLayout, ...rest }) => {
-            return (
-              <Route
-                key={path}
-                path={path}
-                render={props => {
-                  updateDisplayLayout(currentLayout, layout);
-                  return <Component {...props} />;
-                }}
-                {...rest}
-              />
-            );
-          },
-        )}
-      </Switch>
+      <div id="main-content">
+        <Switch>
+          {routes.map(
+            ({
+              component: Component,
+              path,
+              layout: currentLayout,
+              ...rest
+            }) => {
+              return (
+                <Route
+                  key={path}
+                  path={path}
+                  render={props => {
+                    updateDisplayLayout(currentLayout, layout);
+                    return <Component {...props} />;
+                  }}
+                  {...rest}
+                />
+              );
+            },
+          )}
+        </Switch>
+      </div>
     </div>
   );
 };

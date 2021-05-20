@@ -22,7 +22,7 @@ const Home = () => {
   if (fetchingResumes || fetchingProfile) {
     return <Skeleton />;
   }
-  console.log({ profile });
+
   const sectionResumes = listResumeMapper(resumes?.results);
 
   if (!sectionResumes?.length) {

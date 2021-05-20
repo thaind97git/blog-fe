@@ -27,12 +27,13 @@ const PostDetails = () => {
 
   return (
     <div className="blog-details">
-      <span className="datetime">
+      <span className="blog-details__datetime">
         {postTimeFormat(postDetails.publishedAt)}
       </span>
-      <h1>{postDetails.title}</h1>
+      <h1 className="blog-details__title">{postDetails.title}</h1>
       {postDetails && (
         <div
+          className="blog-details__content"
           dangerouslySetInnerHTML={{
             __html: parseMarkdown(postDetails.content),
           }}

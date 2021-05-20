@@ -1,10 +1,27 @@
 .blog-details {
-  margin: auto;
-  padding: 30px;
+  // margin: auto;
+  // padding: 24px;
   font-size: 16px;
 
   @media (max-width: 414px) {
     padding: 70px 16px 0;
+  }
+
+  &__content {
+    & > *:not(pre) {
+      width: 90%;
+      margin-left: 5%;
+    }
+  }
+
+  &__title,
+  &__datetime {
+    width: 90%;
+    margin-left: 5%;
+  }
+
+  &__datetime {
+    color: #8e8e8e;
   }
 
   h1,
@@ -22,16 +39,12 @@
   }
 
   p {
-    line-height: 1.4rem;
+    line-height: 1.5;
   }
 
   a {
     color: $m-text-code;
     text-decoration: underline;
-  }
-
-  .datetime {
-    color: #8e8e8e;
   }
 
   /**
@@ -49,10 +62,12 @@
     padding-left: 1rem;
     margin-left: 0px;
     margin-right: 0px;
-    border-left: 0.25rem solid rgba(25, 53, 73, 0.5);
+    @include themify($themes) {
+      border-left: 0.25rem solid themed('textColor');
+    }
   }
   pre {
-    margin: 14px;
+    // margin: 14px;
     display: block;
     position: relative;
     padding: 20px 0 0;
@@ -100,7 +115,7 @@
     border: none;
     border-radius: 3px;
     display: inline-block;
-    overflow: inherit;
+    // overflow: inherit;
     padding: 1.58333rem;
     white-space: inherit;
     word-wrap: normal;
@@ -108,18 +123,17 @@
     letter-spacing: 1px;
   }
   code:not(.language-javascript) {
-    font-family: D2Coding, 'D2 coding', monospace, serif;
+    // font-family: D2Coding, 'D2 coding', monospace, serif;
+    font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace;
     max-width: 100%;
     overflow: auto;
     @include themify($themes) {
       color: themed('codeColor');
       background: themed('codeBackgroundColor');
     }
-    padding-top: 0;
-    padding-left: 8px;
     border-radius: 5px;
-    padding-right: 8px;
-    padding-bottom: 0;
+    padding: 1px 6px;
+    font-size: 0.85em;
   }
   pre code {
     color: $m-text-1;
