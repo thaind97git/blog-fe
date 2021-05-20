@@ -9,7 +9,7 @@ const SEO = ({
 }) => {
   return (
     <div>
-      <Helmet htmlAttributes>
+      <Helmet>
         {/* <!-- HTML Meta Tags --> */}
         <title>{title}</title>
         <meta name="description" content={description} />

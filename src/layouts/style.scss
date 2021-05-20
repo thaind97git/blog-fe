@@ -13,4 +13,8 @@
       background-color: themed('backgroundColor');
     }
   }
+
+  & + & {
+    display: none;
+  }
 }

@@ -10,23 +10,29 @@ import { setTheme } from '@/store/actions';
 const Layout = () => {
   const dispatch = useDispatch();
   const [isDark, setIsDark] = useState(JSON.parse(getTheme()));
+
   useEffect(() => {
     dispatch(setTheme(isDark ? THEME_TOGGLE.dark : THEME_TOGGLE.light));
   }, [isDark, dispatch]);
+
   const layoutClass = [
     'layout',
     `theme-${isDark ? THEME_TOGGLE.dark : THEME_TOGGLE.light}`,
   ].join(' ');
+
   return (
-    <div className={layoutClass}>
-      <Sidebar
-        onThemeChange={event => setIsDark(event.target.checked)}
-        themeValue={isDark}
-      />
-      <div className="layout--content">
-        <Main />
+    <>
+      <div className={layoutClass}>
+        <Sidebar
+          onThemeChange={event => setIsDark(event.target.checked)}
+          themeValue={isDark}
+        />
+        <div className="layout--content">
+          <Main />
+        </div>
       </div>
-    </div>
+      <div className="layout"></div>
+    </>
   );
 };
 
