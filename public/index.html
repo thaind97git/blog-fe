@@ -3,6 +3,7 @@
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/favicon.ico" />
     <title>aldenn</title>
+    <base href="/" />
   </head>
   <body>
     <div id="root"></div>
@@ -10,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script
     async
-    src="https://www.googletagmanager.com/gtag/js?id=UA-196945870-2"
+    src="https://www.googletagmanager.com/gtag/js?id=%REACT_APP_GA_ID%"
   ></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -19,6 +20,6 @@
     }
     gtag('js', new Date());
 
-    gtag('config', 'UA-196945870-2');
+    gtag('config', '%REACT_APP_GA_ID%');
   </script>
 </html>
