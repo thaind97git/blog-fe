@@ -75,7 +75,7 @@
     color: #dcdcdc;
     border-radius: 5px;
     overflow-y: hidden;
-    font-size: 14px;
+    font-size: 16px;
   }
   pre:before {
     display: inline-block;
@@ -121,6 +121,9 @@
     word-wrap: normal;
     font-family: Inconsolata, monospace;
     letter-spacing: 1px;
+    color: $m-text-1;
+    line-height: 1.55rem;
+    font-size: 16px;
   }
   code:not(.language-javascript) {
     // font-family: D2Coding, 'D2 coding', monospace, serif;
@@ -135,10 +138,7 @@
     padding: 1px 6px;
     font-size: 0.85em;
   }
-  pre code {
-    color: $m-text-1;
-    line-height: 1.4rem;
-  }
+
   .copy-button {
     position: absolute;
     top: 10px;
