@@ -3,14 +3,14 @@ import { useHistory } from 'react-router-dom';
 
 import { getTodoList } from '@/apis/todo';
 import Button from '@/components/Button';
-import useGetRequest from '@/hooks/useGetRequest';
+import useGet from '@/hooks/useGet';
 
 const TodoList = () => {
   const history = useHistory();
   const [refreshTodo, setRefreshTodo] = useState(false);
 
-  const { data: todoList = [] } = useGetRequest({
-    promiseFunction: getTodoList,
+  const { data: todoList = [] } = useGet({
+    func: getTodoList,
     refresh: refreshTodo,
   });
 

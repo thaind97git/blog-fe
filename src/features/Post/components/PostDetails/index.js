@@ -3,18 +3,17 @@ import { useParams } from 'react-router-dom';
 
 import { getPostDetailsBySlug } from '@/apis/post';
 
-import useGetRequest from '@/hooks/useGetRequest';
 import EmptyRecord from '@/components/Empty-Record';
 
 import { parseMarkdown } from '@/helpers/markdown';
 import { postTimeFormat } from '@/utils';
+import useGet from '@/hooks/useGet';
 
 const PostDetails = () => {
   const params = useParams();
   const { slug } = params;
-  const { data: postDetails, fetching } = useGetRequest({
-    promiseFunction: getPostDetailsBySlug,
-    param: { slug },
+  const { data: postDetails, fetching } = useGet({
+    func: () => getPostDetailsBySlug({ slug }),
   });
 
   if (!slug || fetching) {

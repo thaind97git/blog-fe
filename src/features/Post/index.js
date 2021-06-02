@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
 
 import useDidMountEffect from '@/hooks/useDidMountEffect';
-import useGetRequest from '@/hooks/useGetRequest';
 import PostList from './components/PostList';
 import Pagination from '@/components/Pagination';
 
 import { getPostPaging } from '@/apis/post';
+import useGet from '@/hooks/useGet';
 
 const BlogPost = () => {
   const [refreshPost, setRefreshPost] = useState(false);
 
   const [pageIndex, setPageIndex] = useState(1);
 
-  const { data: posts = {}, fetching: fetchingPosts } = useGetRequest({
-    promiseFunction: getPostPaging,
-    param: { pageIndex, pageSize: 10 },
+  const { data: posts = {}, fetching: fetchingPosts } = useGet({
+    func: () => getPostPaging({ pageIndex, pageSize: 10 }),
     refresh: refreshPost,
   });
 

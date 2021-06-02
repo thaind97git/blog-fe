@@ -2,15 +2,15 @@ import React from 'react';
 
 import { getSocials } from '@/apis/profile';
 
-import useGetRequest from '@/hooks/useGetRequest';
 import Tooltip from '@/components/Tooltip';
 
 import { ensureArray } from '@/utils';
 import { SOCIAL_ICONS } from '../../constant/socials';
+import useGet from '@/hooks/useGet';
 
 const Socials = ({ openDrawer }) => {
-  const { data: socials, fetching: fetchingSocials } = useGetRequest({
-    promiseFunction: getSocials,
+  const { data: socials, fetching: fetchingSocials } = useGet({
+    func: getSocials,
   });
 
   if (fetchingSocials) {

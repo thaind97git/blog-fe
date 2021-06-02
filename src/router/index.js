@@ -1,5 +1,5 @@
 import NotFound from '@/components/Not-Found';
-import RouteModules from '../pages/**/route.js';
+import RouteModules from '../features/**/route.js';
 
 export default [
   ...RouteModules.reduce((prev, module) => {

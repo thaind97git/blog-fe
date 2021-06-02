@@ -1,13 +1,13 @@
 import React from 'react';
 import { getTags } from '@/apis/tag';
-import useGetRequest from '@/hooks/useGetRequest';
 import Tag from './components/Tag';
 
 import { ensureArray } from '@/utils';
+import useGet from '@/hooks/useGet';
 
 const Tags = () => {
-  const { data: tags, fetching: fetchingTags } = useGetRequest({
-    promiseFunction: getTags,
+  const { data: tags, fetching: fetchingTags } = useGet({
+    func: getTags,
   });
 
   if (fetchingTags) {
