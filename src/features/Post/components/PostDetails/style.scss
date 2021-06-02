@@ -47,6 +47,10 @@
     text-decoration: underline;
   }
 
+  li {
+    list-style: inherit;
+  }
+
   /**
    * based on zenburn.css
    *
