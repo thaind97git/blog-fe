@@ -4,10 +4,11 @@ import { useParams } from 'react-router-dom';
 import { getPostDetailsBySlug } from '@/apis/post';
 
 import EmptyRecord from '@/components/Empty-Record';
+import Skeleton from '@/components/Skeleton';
+import useGet from '@/hooks/useGet';
 
 import { parseMarkdown } from '@/helpers/markdown';
 import { postTimeFormat } from '@/utils';
-import useGet from '@/hooks/useGet';
 
 const PostDetails = () => {
   const params = useParams();
@@ -16,8 +17,12 @@ const PostDetails = () => {
     func: () => getPostDetailsBySlug({ slug }),
   });
 
-  if (!slug || fetching) {
+  if (!slug) {
     return null;
+  }
+
+  if (fetching) {
+    return <Skeleton code />;
   }
 
   if (!postDetails) {

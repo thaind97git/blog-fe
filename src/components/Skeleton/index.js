@@ -1,92 +1,63 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
-const Skeleton = ({ type = 'normal' }) => {
-  if (type === 'card') {
-    return (
-      <div className="loader">
-        <div className="skeleton skeleton--card">
-          <div className="skeleton--content">
-            <div className="skeleton--content-wrapper">
-              <div className="skeleton--content-wrapper fl">
-                <div className="loader skeleton--circle"></div>
-              </div>
-              <div className="skeleton--content-wrapper fl">
-                <div className="loader skeleton--title"></div>
-                <div className="loader skeleton--line skeleton--line__short"></div>
-              </div>
-            </div>
-            <div className="skeleton--content-wrapper">
-              <div className="loader skeleton--line"></div>
-              <div className="loader skeleton--line"></div>
-              <div className="loader skeleton--line"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
+import {
+  BulletList,
+  List,
+  Facebook,
+  Instagram,
+  Code,
+} from 'react-content-loader';
+import { useShallowEqualSelector } from '@/hooks/useShallowEqualSelector';
+import { getTheme } from '@/store/selectors';
+import { THEME_TOGGLE } from '@/enums/theme';
 
-  if (type === 'table') {
-    return (
-      <div className="loader">
-        <div className="skeleton">
-          <div className="skeleton--content">
-            <div className="skeleton--content-wrapper">
-              <div className="loader skeleton--title"></div>
-              <div className="loader skeleton--hr"></div>
-            </div>
-            <div className="skeleton--content-wrapper skeleton--table">
-              <div className="skeleton--tr">
-                <div className="loader skeleton--th"></div>
-                <div className="loader skeleton--th skeleton--td__3"></div>
-                <div className="loader skeleton--th skeleton--td__2"></div>
-                <div className="loader skeleton--th skeleton--td__5"></div>
-                <div className="loader skeleton--th skeleton--td__4"></div>
-              </div>
-              <div className="skeleton--tr">
-                <div className="loader skeleton--td"></div>
-                <div className="loader skeleton--td skeleton--td__3"></div>
-                <div className="loader skeleton--td skeleton--td__2"></div>
-                <div className="loader skeleton--td skeleton--td__5"></div>
-                <div className="loader skeleton--td skeleton--td__4"></div>
-              </div>
-              <div className="skeleton--tr">
-                <div className="loader skeleton--td"></div>
-                <div className="loader skeleton--td skeleton--td__3"></div>
-                <div className="loader skeleton--td skeleton--td__2"></div>
-                <div className="loader skeleton--td skeleton--td__5"></div>
-                <div className="loader skeleton--td skeleton--td__4"></div>
-              </div>
-              <div className="skeleton--tr">
-                <div className="loader skeleton--td"></div>
-                <div className="loader skeleton--td skeleton--td__3"></div>
-                <div className="loader skeleton--td skeleton--td__2"></div>
-                <div className="loader skeleton--td skeleton--td__5"></div>
-                <div className="loader skeleton--td skeleton--td__4"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
+const getSkeletonType = ({ list, bulletList, code, facebook, instagram }) => {
+  switch (true) {
+    case list:
+      return List;
+    case bulletList:
+      return BulletList;
+    case code:
+      return Code;
+    case facebook:
+      return Facebook;
+    case instagram:
+      return Instagram;
+    default:
+      return BulletList;
   }
-  return (
-    <div className="loader">
-      <div className="skeleton skeleton--card">
-        <div className="skeleton--content">
-          <div className="skeleton--content-wrapper">
-            <div className="loader skeleton--title"></div>
-            <div className="loader skeleton--hr"></div>
-          </div>
-          <div className="skeleton--content-wrapper">
-            <div className="loader skeleton--line"></div>
-            <div className="loader skeleton--line"></div>
-            <div className="loader skeleton--line"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+};
+
+const Skeleton = ({
+  list,
+  bulletList,
+  code,
+  facebook,
+  instagram,
+  ...others
+}) => {
+  const currentTheme = useShallowEqualSelector(getTheme);
+
+  const skeletonStyles = useMemo(() => {
+    const styles = {
+      backgroundColor: '#bebebe33',
+      foregroundColor: '#f1f1f1',
+    };
+    if (currentTheme === THEME_TOGGLE.dark) {
+      styles.foregroundColor = '#7e7e7e';
+    }
+    return styles;
+  }, [currentTheme]);
+
+  const SkeletonType = getSkeletonType({
+    list,
+    bulletList,
+    code,
+    facebook,
+    instagram,
+  });
+
+  return <SkeletonType {...skeletonStyles} {...others} />;
 };
 
 export default Skeleton;

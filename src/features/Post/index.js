@@ -3,9 +3,10 @@ import React, { useState } from 'react';
 import useDidMountEffect from '@/hooks/useDidMountEffect';
 import PostList from './components/PostList';
 import Pagination from '@/components/Pagination';
+import Skeleton from '@/components/Skeleton';
+import useGet from '@/hooks/useGet';
 
 import { getPostPaging } from '@/apis/post';
-import useGet from '@/hooks/useGet';
 
 const BlogPost = () => {
   const [refreshPost, setRefreshPost] = useState(false);
@@ -22,6 +23,9 @@ const BlogPost = () => {
   }, [pageIndex]);
 
   const { results, totalResults } = posts;
+  if (!results) {
+    return <Skeleton />;
+  }
   return (
     <>
       <PostList posts={results} fetching={fetchingPosts} />

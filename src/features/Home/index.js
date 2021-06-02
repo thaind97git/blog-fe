@@ -6,9 +6,9 @@ import { getProfile } from '@/apis/profile';
 import Resume from '@/components/Resume';
 import Skeleton from '@/components/Skeleton';
 import EmptyRecord from '@/components/Empty-Record';
+import useGet from '@/hooks/useGet';
 
 import { listResumeMapper } from '@/helpers/mapper';
-import useGet from '@/hooks/useGet';
 
 const Home = () => {
   const { data: resumes, fetching: fetchingResumes } = useGet({
