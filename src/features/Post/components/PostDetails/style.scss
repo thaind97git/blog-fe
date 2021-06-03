@@ -9,8 +9,9 @@
 
   &__content {
     & > *:not(pre) {
-      width: 90%;
-      margin-left: 5%;
+      width: 88%;
+      margin-left: auto;
+      margin-right: auto;
     }
   }
 
@@ -45,7 +46,6 @@
 
   a {
     color: $m-text-code;
-    text-decoration: underline;
   }
 
   li {

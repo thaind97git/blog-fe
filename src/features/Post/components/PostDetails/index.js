@@ -25,7 +25,8 @@ const PostDetails = () => {
       for (const child of childNode.childNodes) {
         if (child.nodeName?.toUpperCase() === 'IMG') {
           childNode.style.width = '100%';
-          childNode.style['margin-left'] = 0;
+          childNode.style['margin-left'] = 'auto';
+          childNode.style['margin-right'] = 'auto';
         }
       }
     }
