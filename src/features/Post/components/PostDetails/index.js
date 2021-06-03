@@ -9,6 +9,7 @@ import useGet from '@/hooks/useGet';
 
 import { parseMarkdown } from '@/helpers/markdown';
 import { postTimeFormat } from '@/utils';
+import useDidMountEffect from '@/hooks/useDidMountEffect';
 
 const PostDetails = () => {
   const params = useParams();
@@ -16,6 +17,19 @@ const PostDetails = () => {
   const { data: postDetails, fetching } = useGet({
     func: () => getPostDetailsBySlug({ slug }),
   });
+
+  useDidMountEffect(() => {
+    const blogContent =
+      document.getElementsByClassName('blog-details__content')?.[0] || [];
+    for (const childNode of blogContent.childNodes) {
+      for (const child of childNode.childNodes) {
+        if (child.nodeName?.toUpperCase() === 'IMG') {
+          childNode.style.width = '100%';
+          childNode.style['margin-left'] = 0;
+        }
+      }
+    }
+  }, [postDetails]);
 
   if (!slug) {
     return null;

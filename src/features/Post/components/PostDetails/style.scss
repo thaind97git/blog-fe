@@ -65,8 +65,8 @@
   blockquote {
     font-style: italic;
     padding-left: 1rem;
-    margin-left: 0px;
-    margin-right: 0px;
+    // margin-left: 0px;
+    // margin-right: 0px;
     @include themify($themes) {
       border-left: 0.25rem solid themed('textColor');
     }
